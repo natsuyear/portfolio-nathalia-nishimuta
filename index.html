@@ -8,33 +8,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=DM+Mono:wght@400;500&display=swap"
     />
+    <link rel="icon" type="image/png" href="logo-nathalia-mark.png" />
     <link rel="stylesheet" href="hark.css" />
     <link rel="stylesheet" href="hark-hero.css" />
     <style>
-      /* ---------- Editorial: warm cream, charcoal ink, terracotta and gold ---------- */
+      /* ---------- Editorial: warm cream, ink, orange and hot pink from the N monogram ---------- */
       :root {
-        --x-cream: light-dark(#f4ecdd, #1c1915);
-        --x-card: light-dark(#fbf7ee, #25211c);
-        --x-card-2: light-dark(#efe5d2, #2d2822);
-        --x-ink: light-dark(#1c1915, #f4ecdd);
-        --x-ink-2: light-dark(#5e5347, #bfb2a0);
-        --x-terra: light-dark(#c2633a, #d9784d);
-        --x-terra-text: light-dark(#9a4824, #e59670);
-        --x-on-terra: light-dark(#fbf7ee, #1c1915);
-        --x-gold: #c9a35b;
-        --x-gold-2: #e6c98a;
-        --x-gold-text: light-dark(#7e5f27, #e6c98a);
-        --x-line: light-dark(rgb(201 163 91 / 0.6), rgb(201 163 91 / 0.42));
-        --x-line-soft: light-dark(rgb(201 163 91 / 0.32), rgb(201 163 91 / 0.22));
-        --x-grid: light-dark(rgb(126 95 39 / 0.13), rgb(230 201 138 / 0.07));
-        --x-focus: light-dark(#7e5f27, #e6c98a);
-        --x-glow: 0 0 0 1px light-dark(rgb(194 99 58 / 0.4), rgb(229 150 112 / 0.4)),
-          0 22px 44px -24px light-dark(rgb(154 72 36 / 0.5), rgb(0 0 0 / 0.75));
-        --x-lift: 0 26px 50px -28px light-dark(rgb(28 25 21 / 0.45), rgb(0 0 0 / 0.8));
-        --x-serif: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
-        --x-mono: "Geist Mono", ui-monospace, monospace;
+        --x-cream: light-dark(#f4ecdd, #10131c);
+        --x-card: light-dark(#fbf7ee, #181c27);
+        --x-card-2: light-dark(#efe5d2, #212634);
+        --x-ink: light-dark(#10131c, #f4ecdd);
+        --x-ink-2: light-dark(#4a4d57, #c3c1bb);
+        --x-terra: #e8692e;
+        --x-terra-text: light-dark(#ae4217, #f08a55);
+        --x-terra-big: light-dark(#d85a20, #f08a55);
+        --x-on-terra: #10131c;
+        --x-pink: #f0386b;
+        --x-pink-text: light-dark(#c21e50, #f56a90);
+        --x-salmon: #ebaba0;
+        --x-gold: var(--x-ink);
+        --x-gold-2: #ebaba0;
+        --x-gold-text: var(--x-ink);
+        --x-line: light-dark(rgb(16 19 28 / 0.3), rgb(244 236 221 / 0.28));
+        --x-line-soft: light-dark(rgb(16 19 28 / 0.14), rgb(244 236 221 / 0.14));
+        --x-grid: light-dark(rgb(16 19 28 / 0.06), rgb(244 236 221 / 0.05));
+        --x-focus: light-dark(#ae4217, #f08a55);
+        --x-glow: 0 0 0 1px light-dark(rgb(232 105 46 / 0.55), rgb(240 138 85 / 0.5)),
+          0 22px 44px -24px light-dark(rgb(240 56 107 / 0.4), rgb(0 0 0 / 0.75));
+        --x-lift: 0 26px 50px -28px light-dark(rgb(16 19 28 / 0.45), rgb(0 0 0 / 0.8));
+        --x-serif: "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
+        --x-mono: "DM Mono", ui-monospace, monospace;
+        --sans: "DM Sans", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+        --size-body: 17px;
         --x-dur: 0.8s;
 
         --text-primary: var(--x-ink);
@@ -55,13 +62,13 @@
         color: var(--x-ink);
       }
       :focus-visible { outline: 2px solid var(--x-focus); outline-offset: 3px; }
-      ::selection { background: rgb(194 99 58 / 0.25); }
+      ::selection { background: rgb(232 105 46 / 0.25); }
 
       /* Nav: cream glass, mono labels */
       .nav.glass {
         background: color-mix(in srgb, var(--x-cream) 86%, transparent);
         border: 1px solid var(--x-line);
-        box-shadow: 0 12px 30px -20px rgb(28 25 21 / 0.4);
+        box-shadow: 0 12px 30px -20px rgb(16 19 28 / 0.4);
       }
       .nav :focus-visible { outline-color: var(--x-focus); outline-offset: 1px; }
       .nav .seg { background: transparent; gap: 2px; }
@@ -79,7 +86,7 @@
       .nav .seg a:hover { color: var(--x-terra-text); }
       .nav .seg a[aria-current="true"] { background: var(--x-ink); color: var(--x-cream); }
       .nav .theme-btn { width: var(--tap); height: var(--tap); background: transparent; color: var(--x-ink); }
-      .nav .theme-btn:hover { box-shadow: inset 0 0 0 100px rgb(201 163 91 / 0.18); }
+      .nav .theme-btn:hover { box-shadow: inset 0 0 0 100px rgb(235 171 160 / 0.18); }
 
       /* Sections: gold hairlines, numbered mono eyebrows, serif headings */
       .main .section { position: relative; border-top: 1px solid var(--x-line); scroll-margin-top: 88px; }
@@ -92,10 +99,11 @@
         text-transform: uppercase;
         color: var(--x-gold-text);
       }
-      .x-eyebrow::after { content: ""; flex: 0 1 72px; height: 1px; background: var(--x-gold); }
-      .x-n { color: var(--x-terra-text); }
-      .main .head h2 { font: 400 clamp(36px, 5.2vw, 60px)/1.02 var(--x-serif); letter-spacing: -0.012em; color: var(--x-ink); }
-      .main .head h2 em, .x-name em { font-style: italic; color: var(--x-terra-text); }
+      .x-eyebrow::after { content: ""; flex: 0 1 72px; height: 1px; background: var(--x-terra); }
+      .x-n { color: var(--x-terra-text); font-weight: 500; }
+      .main .head h2 { font: 700 clamp(32px, 4.4vw, 52px)/1.06 var(--x-serif); letter-spacing: -0.02em; color: var(--x-ink); }
+      .main .head h2 em, .x-name em { font-style: normal; color: var(--x-terra-big); }
+      .main .head h2 em { box-shadow: inset 0 -0.18em 0 color-mix(in srgb, var(--x-salmon) 55%, transparent); }
       .main .head__sub { color: var(--x-ink-2); }
       .x-hand-sub { font: 400 12px/1.5 var(--x-mono); letter-spacing: 0.08em; text-transform: uppercase; }
       .main .prose { font-size: 17px; line-height: 1.65; }
@@ -105,12 +113,12 @@
       .main .link, .foot .link {
         color: var(--x-ink);
         text-decoration: underline;
-        text-decoration-color: var(--x-gold);
+        text-decoration-color: var(--x-terra);
         text-decoration-thickness: 1px;
         text-underline-offset: 5px;
         transition: color var(--dur-quick) ease, text-decoration-color var(--dur-quick) ease, text-underline-offset var(--dur-quick) ease;
       }
-      .main .link:hover { color: var(--x-terra-text); text-decoration-color: var(--x-terra); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+      .main .link:hover { color: var(--x-pink-text); text-decoration-color: var(--x-pink); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 
       /* Buttons */
       .main .btn {
@@ -126,16 +134,17 @@
       }
       .main .btn[target="_blank"]::after { color: inherit; }
       .main .btn:hover { background: var(--x-ink); color: var(--x-cream); box-shadow: none; transform: translateY(-1px); }
-      .main .x-btn-accent { background: var(--x-terra-text); border-color: var(--x-terra-text); color: var(--x-on-terra); }
-      .main .x-btn-accent:hover { background: var(--x-ink); border-color: var(--x-ink); color: var(--x-cream); box-shadow: var(--x-glow); }
+      .main .x-btn-accent { background: var(--x-terra); border-color: var(--x-terra); color: var(--x-on-terra); font-weight: 700; }
+      .main .x-btn-accent:hover { background: var(--x-pink); border-color: var(--x-pink); color: var(--x-on-terra); box-shadow: var(--x-glow); }
 
       /* Chips, pills, tags */
       .main .chip { background: transparent; border: 1px solid var(--x-line); color: var(--x-ink); font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.04em; padding: 4px 12px 4px 10px; }
       .main .x-chip-done::before { background: var(--x-gold); box-shadow: none; }
-      .main .x-chip-now::before { background: var(--x-terra); box-shadow: 0 0 0 3px rgb(194 99 58 / 0.18); }
+      .main .x-chip-now::before { background: var(--x-terra); box-shadow: 0 0 0 3px rgb(232 105 46 / 0.18); }
       .main .pill { background: transparent; border: 1px solid var(--x-line); color: var(--x-ink-2); font: 400 12px/1.6 var(--x-mono); padding: 0 10px; }
-      .main .x-tag { color: var(--x-terra-text); border-color: rgb(194 99 58 / 0.45); }
+      .main .x-tag { color: var(--x-pink-text); border-color: rgb(240 56 107 / 0.45); background: color-mix(in srgb, var(--x-salmon) 18%, transparent); }
       .foot { border-top: 1px solid var(--x-line); padding-top: 24px; }
+      .x-foot-mark { display: inline-block; width: 28px; height: auto; margin-right: 10px; vertical-align: middle; }
       .foot nav a { display: inline-flex; align-items: center; min-height: var(--tap); padding-inline: 14px; background: transparent; border: 1px solid var(--x-line); color: var(--x-ink); font: 400 12px/1 var(--x-mono); letter-spacing: 0.08em; text-transform: uppercase; }
       .foot nav a:hover { box-shadow: none; border-color: var(--x-terra); color: var(--x-terra-text); }
 
@@ -166,16 +175,16 @@
       }
       .x-blobs { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
       .x-blobs span { position: absolute; border-radius: 50%; filter: blur(48px); }
-      .x-blobs span:nth-child(1) { width: min(460px, 70vw); aspect-ratio: 1; right: 2%; top: 4%; background: radial-gradient(circle, rgb(194 99 58 / 0.36), transparent 66%); }
-      .x-blobs span:nth-child(2) { width: min(340px, 60vw); aspect-ratio: 1; left: -6%; bottom: 0; background: radial-gradient(circle, rgb(230 201 138 / 0.42), transparent 66%); }
-      .x-blobs span:nth-child(3) { width: 220px; aspect-ratio: 1; left: 44%; top: -4%; background: radial-gradient(circle, rgb(194 99 58 / 0.2), transparent 66%); }
+      .x-blobs span:nth-child(1) { width: min(460px, 70vw); aspect-ratio: 1; right: 2%; top: 4%; background: radial-gradient(circle, rgb(232 105 46 / 0.36), transparent 66%); }
+      .x-blobs span:nth-child(2) { width: min(340px, 60vw); aspect-ratio: 1; left: -6%; bottom: 0; background: radial-gradient(circle, rgb(235 171 160 / 0.42), transparent 66%); }
+      .x-blobs span:nth-child(3) { width: 220px; aspect-ratio: 1; left: 44%; top: -4%; background: radial-gradient(circle, rgb(232 105 46 / 0.2), transparent 66%); }
       .x-hero__eyebrow { display: flex; align-items: center; gap: 12px; font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--x-gold-text); }
-      .x-hero__eyebrow::before { content: ""; width: 40px; height: 1px; background: var(--x-gold); }
+      .x-hero__eyebrow::before { content: ""; width: 40px; height: 2px; background: var(--x-terra); }
       .x-hero h1 { margin-top: 22px; }
-      .x-name { display: block; font: 400 clamp(60px, 9.4vw, 120px)/0.9 var(--x-serif); letter-spacing: -0.025em; }
+      .x-name { display: block; font: 800 clamp(50px, 7.6vw, 100px)/0.95 var(--x-serif); letter-spacing: -0.035em; }
       .x-name em { display: block; }
       .x-role { display: flex; align-items: center; gap: 12px; margin-top: 22px; font: 400 13px/1.4 var(--x-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--x-ink-2); }
-      .x-hero__sub { margin-top: 28px; max-width: 32ch; font: 400 clamp(22px, 2.4vw, 28px)/1.3 var(--x-serif); color: var(--x-ink); }
+      .x-hero__sub { margin-top: 28px; max-width: 32ch; font: 500 clamp(21px, 2.2vw, 26px)/1.3 var(--x-serif); letter-spacing: -0.01em; color: var(--x-ink); }
       .x-hero__meta { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--x-line-soft); max-width: 52ch; font: 400 12px/1.7 var(--x-mono); letter-spacing: 0.04em; color: var(--x-ink-2); }
       .x-next {
         margin-top: 30px;
@@ -191,7 +200,7 @@
         box-shadow: var(--x-lift);
       }
       .x-next__head { display: flex; align-items: center; gap: 10px; font: 400 12px/1 var(--x-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--x-gold-text); }
-      .x-next__head::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--x-terra); box-shadow: 0 0 0 4px rgb(194 99 58 / 0.18); }
+      .x-next__head::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--x-terra); box-shadow: 0 0 0 4px rgb(232 105 46 / 0.18); }
       .x-next .btn { justify-self: start; }
 
       /* Hero photo: an early-2000s compact digital camera */
@@ -202,14 +211,14 @@
         padding: 12px 14px 10px;
         border-radius: 28px 28px 22px 22px;
         background: linear-gradient(155deg, #4a433b 0%, #2a2520 38%, #1c1915 70%, #302a24 100%);
-        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.14), inset 0 -2px 0 rgb(0 0 0 / 0.45), 0 0 0 1px rgb(201 163 91 / 0.45), var(--x-lift), 0 40px 80px -40px rgb(154 72 36 / 0.45);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.14), inset 0 -2px 0 rgb(0 0 0 / 0.45), 0 0 0 1px rgb(235 171 160 / 0.45), var(--x-lift), 0 40px 80px -40px rgb(240 56 107 / 0.45);
         rotate: -2deg;
         color: #e9dfcd;
       }
       .x-cam__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 2px 8px 10px; font: 400 12px/1 var(--x-mono); letter-spacing: 0.14em; color: #bfb2a0; }
       .x-cam__top b { font-weight: 400; color: var(--x-gold-2); }
       .x-cam__bits { display: flex; align-items: center; gap: 10px; }
-      .x-cam__vf { width: 26px; height: 14px; border-radius: 4px; background: linear-gradient(135deg, #0e0c0a, #3a342d); box-shadow: inset 0 0 0 1px rgb(201 163 91 / 0.5); }
+      .x-cam__vf { width: 26px; height: 14px; border-radius: 4px; background: linear-gradient(135deg, #0e0c0a, #3a342d); box-shadow: inset 0 0 0 1px rgb(235 171 160 / 0.5); }
       .x-cam__led { width: 6px; height: 6px; border-radius: 50%; background: #7fbf6a; box-shadow: 0 0 6px #7fbf6a; }
       .x-cam__screen {
         position: relative;
@@ -217,7 +226,7 @@
         overflow: hidden;
         border-radius: 8px;
         background: #0e0c0a;
-        box-shadow: 0 0 0 4px #121010, 0 0 0 5px rgb(201 163 91 / 0.35), inset 0 0 0 1px rgb(0 0 0 / 0.6);
+        box-shadow: 0 0 0 4px #121010, 0 0 0 5px rgb(235 171 160 / 0.35), inset 0 0 0 1px rgb(0 0 0 / 0.6);
       }
       .x-cam__screen img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; filter: sepia(0.2) saturate(1.08) contrast(1.06) brightness(1.03); }
       .x-cam__screen::before {
@@ -258,9 +267,9 @@
           linear-gradient(#fff4e2, #fff4e2) bottom left / 14px 1.5px no-repeat, linear-gradient(#fff4e2, #fff4e2) bottom left / 1.5px 14px no-repeat,
           linear-gradient(#fff4e2, #fff4e2) bottom right / 14px 1.5px no-repeat, linear-gradient(#fff4e2, #fff4e2) bottom right / 1.5px 14px no-repeat; }
       .x-cam__base { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 8px 4px; }
-      .x-cam__base > span:first-child { font: italic 400 24px/1 var(--x-serif); color: #f4ecdd; }
+      .x-cam__base > span:first-child { font: 700 22px/1 var(--x-serif); color: #f4ecdd; }
       .x-cam__btns { display: flex; align-items: center; gap: 8px; }
-      .x-cam__btns i { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(145deg, #4a433b, #1c1915); box-shadow: inset 0 0 0 1px rgb(201 163 91 / 0.45); }
+      .x-cam__btns i { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(145deg, #4a433b, #1c1915); box-shadow: inset 0 0 0 1px rgb(235 171 160 / 0.45); }
       .x-cam__btns i:last-child { width: 30px; height: 30px; background: radial-gradient(circle, #2a2520 30%, #3a342d 32%, #1c1915 100%); }
       .x-logo {
         position: absolute;
@@ -268,23 +277,16 @@
         z-index: 2;
         display: grid;
         place-items: center;
-        width: clamp(112px, 15vw, 136px);
-        aspect-ratio: 1;
-        padding: 24px;
-        border-radius: 50%;
-        background: var(--x-card);
-        border: 1px solid var(--x-gold);
-        box-shadow: var(--x-lift);
+        width: clamp(104px, 13vw, 128px);
+        rotate: 4deg;
       }
-      .x-logo::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; border: 1px solid var(--x-line-soft); }
-      .x-logo svg { display: block; width: 100%; height: auto; color: var(--x-terra-text); }
-      .x-logo svg path { stroke-width: 1.6; }
+      .x-logo img { display: block; width: 100%; height: auto; filter: drop-shadow(0 12px 18px rgb(16 19 28 / 0.22)); }
       /* 01 Sobre mim */
       .x-about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 300px); gap: clamp(28px, 5vw, 72px); align-items: start; }
       .x-margin { padding: 6px 0 6px 24px; border-left: 1px solid var(--x-gold); }
       .x-margin__label { font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--x-gold-text); }
-      .x-margin__note { margin-top: 10px; font: italic 400 30px/1.12 var(--x-serif); color: var(--x-terra-text); }
-      .x-margin__brain { display: block; width: 112px; height: 84px; margin-top: 18px; color: var(--x-gold-text); }
+      .x-margin__note { margin-top: 10px; font: 600 26px/1.15 var(--x-serif); letter-spacing: -0.015em; color: var(--x-terra-text); }
+      .x-margin__brain { display: block; width: 88px; height: auto; margin-top: 20px; }
       .x-origin {
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(190px, 250px);
@@ -297,7 +299,7 @@
         border-radius: var(--r-l);
       }
       .x-origin__hand { font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--x-gold-text); }
-      .x-origin h3 { margin-top: 12px; font: 400 clamp(28px, 3.4vw, 36px)/1.08 var(--x-serif); }
+      .x-origin h3 { margin-top: 12px; font: 700 clamp(24px, 3vw, 32px)/1.1 var(--x-serif); letter-spacing: -0.015em; }
       .x-origin p + p { margin-top: 8px; }
       .x-slot { margin: 0; padding: 10px; background: var(--x-card-2); border: 1px solid var(--x-line-soft); border-radius: var(--r-s); }
       .x-slot__photo { display: grid; place-items: center; aspect-ratio: 4 / 3; border: 1px dashed var(--x-gold); border-radius: 8px; background: var(--x-card); font-size: 28px; }
@@ -320,23 +322,23 @@
       .x-cert__img img { width: 100%; height: auto; object-fit: contain; transition: transform 0.6s var(--ease-out); }
       .x-cert:hover .x-cert__img img { transform: scale(1.025); }
       .x-cert__date { margin-top: 18px; font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.14em; color: var(--x-gold-text); }
-      .x-cert h3 { margin-top: 8px; font: 400 26px/1.1 var(--x-serif); }
+      .x-cert h3 { margin-top: 8px; font: 700 22px/1.15 var(--x-serif); letter-spacing: -0.01em; }
       .x-cert__by { margin-top: 8px; margin-bottom: 16px; font: var(--type-small); color: var(--x-ink-2); }
       .x-cert__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--x-line-soft); }
       .main .x-cert__verify { display: inline-flex; align-items: center; min-height: var(--tap); margin: 0; font: var(--type-label); }
 
       /* 03 Em formação and 04 Workshops: a gold timeline */
       .x-trail { position: relative; display: grid; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--x-line-soft); }
-      .x-trail::before { content: ""; position: absolute; left: 7.5px; top: 34px; bottom: 34px; width: 1px; background: linear-gradient(var(--x-gold), var(--x-line-soft)); }
+      .x-trail::before { content: ""; position: absolute; left: 7.5px; top: 34px; bottom: 34px; width: 1px; background: linear-gradient(var(--x-terra), var(--x-line-soft)); }
       .x-trail > li { position: relative; display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; gap: 6px 24px; align-items: start; padding: 22px 0; border-bottom: 1px solid var(--x-line-soft); }
       .x-trail__dot { position: relative; width: 16px; height: 16px; margin-top: 2px; border: 1px solid var(--x-gold); border-radius: 50%; background: var(--x-cream); }
       .x-trail__dot::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--x-terra); transition: transform 0.3s var(--ease-out); }
       .x-trail > li:hover .x-trail__dot::after { transform: scale(1.5); }
       .x-trail__when { margin-bottom: 8px; font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--x-gold-text); }
-      .x-trail__title { font: 400 clamp(22px, 2.4vw, 26px)/1.15 var(--x-serif); }
+      .x-trail__title { font: 600 clamp(19px, 2vw, 22px)/1.2 var(--x-serif); letter-spacing: -0.01em; }
       .x-trail__by { margin-top: 4px; font: var(--type-small); color: var(--x-ink-2); }
       .x-trail > li > .chip { margin-top: 2px; }
-      .x-ws-note { display: flex; justify-content: flex-end; margin: -8px 0 12px; font: italic 400 26px/1.1 var(--x-serif); color: var(--x-terra-text); }
+      .x-ws-note { display: flex; justify-content: flex-end; margin: -8px 0 12px; font: 600 22px/1.1 var(--x-serif); color: var(--x-pink-text); }
       .x-trail--ws > li { grid-template-columns: 16px minmax(0, 1fr) minmax(0, 200px); gap: 8px 32px; }
       .x-trail__text { margin-top: 8px; max-width: 60ch; }
       .x-trail__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 10px; }
@@ -357,9 +359,9 @@
       }
       .x-note::before { content: "0" counter(x-note); display: block; font: 400 12px/1 var(--x-mono); letter-spacing: 0.16em; color: var(--x-gold-text); }
       .x-note:hover { transform: translateY(-4px); box-shadow: var(--x-glow); border-color: transparent; }
-      .x-note--cream { background: linear-gradient(170deg, var(--x-card), color-mix(in srgb, var(--x-gold-2) 20%, var(--x-card))); }
-      .x-note--blush { background: linear-gradient(170deg, var(--x-card), color-mix(in srgb, var(--x-terra) 12%, var(--x-card))); }
-      .x-note h3 { margin: 22px 0 16px; padding-bottom: 14px; border-bottom: 1px solid var(--x-line-soft); font: 400 34px/1 var(--x-serif); }
+      .x-note--cream { background: linear-gradient(170deg, var(--x-card), color-mix(in srgb, var(--x-salmon) 26%, var(--x-card))); }
+      .x-note--blush { background: linear-gradient(170deg, var(--x-card), color-mix(in srgb, var(--x-pink) 10%, var(--x-card))); }
+      .x-note h3 { margin: 22px 0 16px; padding-bottom: 14px; border-bottom: 1px solid var(--x-line-soft); font: 700 30px/1 var(--x-serif); letter-spacing: -0.02em; }
       .x-note ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
       .x-note li { position: relative; padding-left: 22px; }
       .x-note li::before { content: ""; position: absolute; left: 0; top: 0.75em; width: 12px; height: 1px; background: var(--x-terra); }
@@ -391,13 +393,16 @@
         margin: 0; padding: 0; list-style: none;
       }
       .x-carousel__track::-webkit-scrollbar { display: none; }
+      .x-carousel__track { cursor: grab; }
+      .x-carousel__track:active { cursor: grabbing; }
+      .x-carousel__slide img { -webkit-user-drag: none; user-select: none; }
       .x-carousel__slide { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; }
       .x-carousel__slide img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
       .x-carousel__count {
         position: absolute; top: 12px; right: 12px;
         padding: 4px 10px;
         border-radius: var(--r-pill);
-        background: rgb(28 25 21 / 0.74);
+        background: rgb(16 19 28 / 0.74);
         color: #f4ecdd;
         font: 400 12px/1.4 var(--x-mono);
         letter-spacing: 0.08em;
@@ -419,7 +424,7 @@
         position: absolute; inset: 8px;
         border-radius: 50%;
         background: rgb(251 247 238 / 0.94);
-        box-shadow: 0 0 0 1px rgb(201 163 91 / 0.6), 0 4px 12px rgb(28 25 21 / 0.25);
+        box-shadow: 0 0 0 1px rgb(235 171 160 / 0.6), 0 4px 12px rgb(16 19 28 / 0.25);
         transition: transform var(--dur-quick) var(--ease-out);
       }
       .x-carousel__btn:hover::before { transform: scale(1.08); }
@@ -439,9 +444,42 @@
       .x-carousel__dots { position: absolute; left: 0; right: 0; bottom: 10px; display: flex; justify-content: center; gap: 6px; pointer-events: none; }
       .x-carousel__dots span { width: 7px; height: 7px; border-radius: 50%; background: rgb(255 255 255 / 0.55); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15); transition: background var(--dur-quick) ease, scale var(--dur-quick) ease; }
       .x-carousel__dots span.is-active { background: #fff; scale: 1.3; }
+      .x-carousel__progress { position: absolute; left: 16px; right: 16px; bottom: 12px; height: 4px; border-radius: var(--r-pill); background: rgb(255 255 255 / 0.5); box-shadow: 0 0 0 1px rgb(16 19 28 / 0.12); overflow: hidden; pointer-events: none; }
+      .x-carousel__progress span { display: block; height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, var(--x-terra), var(--x-pink)); transition: width var(--dur-quick) var(--ease-out); }
+
+      /* Case principal: one card, stacked parts */
+      .x-main {
+        display: grid;
+        gap: clamp(28px, 4vw, 44px);
+        margin-bottom: clamp(20px, 3vw, 32px);
+        padding: clamp(20px, 3.4vw, 40px);
+        background: var(--x-card);
+        border: 1px solid var(--x-line);
+        border-top: 4px solid var(--x-terra);
+        border-radius: var(--r-l);
+        box-shadow: var(--x-lift);
+      }
+      .x-main__head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 32px; align-items: start; }
+      .x-main__head > .x-tags, .x-main__intro { grid-column: 1 / -1; }
+      .x-main__head h3 { margin-top: 10px; font: 800 clamp(28px, 4vw, 46px)/1.04 var(--x-serif); letter-spacing: -0.03em; }
+      .x-main__sub { margin-top: 10px; color: var(--x-ink-2); font: 500 17px/1.45 var(--sans); }
+      .x-main__logos { display: flex; align-items: center; gap: 12px; }
+      .x-main__logos img { width: 84px; height: 84px; object-fit: contain; padding: 8px; background: #fff; border: 1px solid var(--x-line-soft); border-radius: var(--r-s); }
+      .x-main__intro { max-width: 68ch; }
+      .x-part { display: grid; gap: 16px; padding-top: clamp(22px, 3vw, 32px); border-top: 1px solid var(--x-line-soft); }
+      .x-part__head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
+      .x-part h4 { margin-top: 6px; font: 700 clamp(22px, 2.6vw, 30px)/1.1 var(--x-serif); letter-spacing: -0.02em; }
+      .x-part .x-carousel { border: 1px solid var(--x-line-soft); }
+      .x-site { display: grid; gap: 10px; max-width: 60ch; }
+      .x-site__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 6px; }
+      @media (max-width: 680px) {
+        .x-main__head { grid-template-columns: minmax(0, 1fr); }
+        .x-main__logos { order: -1; }
+        .x-main__logos img { width: 68px; height: 68px; }
+      }
       .x-case__body { display: grid; gap: 12px; padding: 8px clamp(4px, 1.4vw, 16px) 8px 4px; }
       .x-case__label { font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--x-gold-text); }
-      .x-case__body h3 { font: 400 clamp(30px, 3.4vw, 40px)/1.05 var(--x-serif); }
+      .x-case__body h3, .x-case__body h4 { font: 700 clamp(24px, 2.8vw, 32px)/1.1 var(--x-serif); letter-spacing: -0.015em; }
       .x-tags { display: flex; flex-wrap: wrap; gap: 8px; }
       .x-case__body .btn { justify-self: start; margin-top: 8px; }
       .x-sketch {
@@ -474,9 +512,9 @@
         text-transform: uppercase;
         white-space: nowrap;
         rotate: -8deg;
-        box-shadow: 0 0 0 3px var(--x-cream), 0 0 0 4px rgb(194 99 58 / 0.35);
+        box-shadow: 0 0 0 3px var(--x-cream), 0 0 0 4px rgb(232 105 46 / 0.35);
       }
-      .x-sketch h3 { font: 400 clamp(26px, 3vw, 34px)/1.1 var(--x-serif); }
+      .x-sketch h3 { font: 700 clamp(22px, 2.6vw, 30px)/1.15 var(--x-serif); letter-spacing: -0.015em; }
       .x-sketch p + p { margin-top: 12px; }
       .x-sketch .x-tags { margin-top: 18px; }
 
@@ -484,35 +522,35 @@
       .x-torn-wrap {
         --x-ink: #f4ecdd;
         --x-ink-2: #cfc3b1;
-        --x-cream: #1c1915;
-        --x-gold-text: #e6c98a;
-        --x-terra-text: #e59670;
-        --x-on-terra: #1c1915;
-        --x-focus: #e6c98a;
-        --x-line: rgb(201 163 91 / 0.5);
+        --x-cream: #10131c;
+        --x-gold-text: #ebaba0;
+        --x-terra-text: #f08a55;
+        --x-on-terra: #10131c;
+        --x-focus: #f08a55;
+        --x-line: rgb(235 171 160 / 0.5);
         --text-primary: #f4ecdd;
         --text-secondary: #cfc3b1;
         position: relative;
         isolation: isolate;
         overflow: hidden;
         border-radius: var(--r-xl);
-        background: light-dark(#1c1915, #2a251f);
+        background: light-dark(#10131c, #181c27);
         color: #f4ecdd;
-        box-shadow: 0 0 0 1px rgb(201 163 91 / 0.45);
+        box-shadow: 0 0 0 1px rgb(235 171 160 / 0.45);
       }
-      .x-torn-wrap::before { content: ""; position: absolute; z-index: -1; width: 520px; aspect-ratio: 1; right: -140px; top: -200px; border-radius: 50%; background: radial-gradient(circle, rgb(194 99 58 / 0.45), transparent 66%); filter: blur(40px); }
-      .x-torn-wrap::after { content: ""; position: absolute; z-index: -1; width: 380px; aspect-ratio: 1; left: -120px; bottom: -220px; border-radius: 50%; background: radial-gradient(circle, rgb(201 163 91 / 0.28), transparent 66%); filter: blur(40px); }
+      .x-torn-wrap::before { content: ""; position: absolute; z-index: -1; width: 520px; aspect-ratio: 1; right: -140px; top: -200px; border-radius: 50%; background: radial-gradient(circle, rgb(232 105 46 / 0.45), transparent 66%); filter: blur(40px); }
+      .x-torn-wrap::after { content: ""; position: absolute; z-index: -1; width: 380px; aspect-ratio: 1; left: -120px; bottom: -220px; border-radius: 50%; background: radial-gradient(circle, rgb(235 171 160 / 0.28), transparent 66%); filter: blur(40px); }
       .x-torn {
         position: relative;
         padding: clamp(44px, 7vw, 96px) clamp(24px, 6vw, 88px);
-        background-image: linear-gradient(rgb(230 201 138 / 0.06) 1px, transparent 1px), linear-gradient(90deg, rgb(230 201 138 / 0.06) 1px, transparent 1px);
+        background-image: linear-gradient(rgb(235 171 160 / 0.06) 1px, transparent 1px), linear-gradient(90deg, rgb(235 171 160 / 0.06) 1px, transparent 1px);
         background-size: 56px 56px;
       }
-      .x-torn__hand { font: italic 400 clamp(48px, 8vw, 96px)/0.95 var(--x-serif); color: var(--x-gold-2); letter-spacing: -0.02em; }
+      .x-torn__hand { font: 800 clamp(42px, 7vw, 84px)/0.95 var(--x-serif); color: var(--x-salmon); letter-spacing: -0.035em; }
       .x-torn .head { grid-template-columns: 1fr; margin-top: 22px; margin-bottom: 28px; padding-top: 22px; border-top: 1px solid var(--x-line); }
       .x-torn .head h2 { color: #f4ecdd; font-size: clamp(30px, 4vw, 44px); }
       .x-torn .head__sub { justify-self: start; text-align: left; max-width: 52ch; color: #cfc3b1; }
-      .x-torn__heart { top: clamp(36px, 6vw, 80px); right: clamp(24px, 6vw, 88px); width: 40px; height: 36px; color: #e59670; }
+      .x-torn__heart { top: clamp(36px, 6vw, 80px); right: clamp(24px, 6vw, 88px); width: 40px; height: 36px; color: var(--x-pink); }
       .x-torn .links { gap: 12px; }
 
       /* Motion: hero entrance, scroll fade-ins, the REC blink, drifting light */
@@ -551,7 +589,7 @@
         .x-cam { rotate: -1deg; padding: 10px 10px 8px; border-radius: 22px 22px 18px 18px; }
         .x-hud__mode { display: none; }
         .x-hud__date { font-size: 14px; }
-        .x-logo { right: 0; width: 104px; padding: 20px; }
+        .x-logo { right: 0; width: 92px; }
         .x-torn__heart { width: 30px; }
       }
       @media (prefers-reduced-motion: reduce) {
@@ -606,8 +644,8 @@
               </div>
               <div class="x-cam__base"><span aria-hidden="true"></span><span class="x-cam__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
             </figure>
-            <div class="x-logo" role="img" aria-label="Logo de Nathália: cérebro desenhado à mão com uma caneta">
-              <svg class="x-ink" viewBox="0 0 120 90" aria-hidden="true" focusable="false"><path d="M40 70 C 22 70, 14 58, 18 48 C 8 44, 10 28, 22 26 C 22 14, 36 8, 46 14 C 52 6, 68 6, 72 16 C 84 12, 96 22, 92 34 C 102 40, 98 56, 86 58 C 86 68, 72 74, 62 68 C 56 74, 46 74, 40 70 Z" /><path d="M46 14 C 44 24, 52 30, 50 40" /><path d="M22 26 C 30 30, 34 36, 32 44" /><path d="M50 40 C 56 48, 52 56, 58 62" /><path d="M72 16 C 66 26, 72 34, 66 44" /><path d="M86 58 C 80 52, 70 52, 66 56" /><path d="M76 86 L104 40" /><path d="M101 44 L110 28 C 113 22, 117 18, 116 14 C 111 14, 107 19, 104 25 L97 38" /><path d="M104 25 C 107 27, 109 28, 110 28" /></svg>
+            <div class="x-logo">
+              <img src="logo-nathalia-mark.png" alt="Logo de Nathália Nishimuta: monograma N em preto, laranja e rosa" width="319" height="313" />
             </div>
           </div>
         </section>
@@ -621,11 +659,12 @@
             <div class="prose">
               <p>Estudei Psicologia na Uninove (não concluído) e hoje estou em transição de carreira para UX/UI Design e Front-end.</p>
               <p>Quero unir tecnologia, psicologia e arte para criar produtos que entendem as pessoas. Sou mãe de duas meninas e estudo com rotina e disciplina.</p>
+              <p>Comecei no design há muitos anos, dentro da Regina Decorações, o negócio de festas da minha mãe. Hoje levo essa marca do papel ao código.</p>
             </div>
             <aside class="x-margin" aria-label="Nota na margem">
               <p class="x-margin__label" aria-hidden="true">Nota</p>
               <p class="x-margin__note">psicologia + arte + tecnologia ✏️</p>
-              <svg class="x-ink x-margin__brain" viewBox="0 0 120 90" aria-hidden="true" focusable="false"><path d="M40 70 C 22 70, 14 58, 18 48 C 8 44, 10 28, 22 26 C 22 14, 36 8, 46 14 C 52 6, 68 6, 72 16 C 84 12, 96 22, 92 34 C 102 40, 98 56, 86 58 C 86 68, 72 74, 62 68 C 56 74, 46 74, 40 70 Z" /><path d="M46 14 C 44 24, 52 30, 50 40" /><path d="M22 26 C 30 30, 34 36, 32 44" /><path d="M50 40 C 56 48, 52 56, 58 62" /><path d="M72 16 C 66 26, 72 34, 66 44" /><path d="M86 58 C 80 52, 70 52, 66 56" /><path d="M76 86 L104 40" /><path d="M101 44 L110 28 C 113 22, 117 18, 116 14 C 111 14, 107 19, 104 25 L97 38" /></svg>
+              <img class="x-margin__brain" src="logo-nathalia-mark.png" alt="" width="319" height="313" />
             </aside>
           </div>
           <div class="x-origin">
@@ -860,32 +899,107 @@
             <p class="head__eyebrow x-eyebrow"><span class="x-n">06</span> — Projetos</p>
             <h2>Um estudo de caso publicado, <em>outro a caminho.</em></h2>
           </div>
-          <article class="x-case">
-            <div class="x-carousel" id="helo-carousel" role="region" aria-roledescription="carrossel" aria-label="Estudo de caso Heloísa Nail Designer" tabindex="0">
-              <ul class="x-carousel__track">
-                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="1 de 9"><img src="helo-slide-1.jpg" alt="Estudo de caso Heloísa — slide 1 de 9" width="1334" height="750" loading="lazy" /></li>
-                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="2 de 9"><img src="helo-slide-2.jpg" alt="Estudo de caso Heloísa — slide 2 de 9" width="1334" height="750" loading="lazy" /></li>
-                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="3 de 9"><img src="helo-slide-3.jpg" alt="Estudo de caso Heloísa — slide 3 de 9" width="1334" height="750" loading="lazy" /></li>
-                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="4 de 9"><img src="helo-slide-4.jpg" alt="Estudo de caso Heloísa — slide 4 de 9" width="1334" height="750" loading="lazy" /></li>
-                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="5 de 9"><img src="helo-slide-5.jpg" alt="Estudo de caso Heloísa — slide 5 de 9" width="1334" height="750" loading="lazy" /></li>
-                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="6 de 9"><img src="helo-slide-6.jpg" alt="Estudo de caso Heloísa — slide 6 de 9" width="1334" height="750" loading="lazy" /></li>
-                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="7 de 9"><img src="helo-slide-7.jpg" alt="Estudo de caso Heloísa — slide 7 de 9" width="1334" height="750" loading="lazy" /></li>
-                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="8 de 9"><img src="helo-slide-8.jpg" alt="Estudo de caso Heloísa — slide 8 de 9" width="1334" height="750" loading="lazy" /></li>
-                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="9 de 9"><img src="helo-slide-9.jpg" alt="Estudo de caso Heloísa — slide 9 de 9" width="1334" height="750" loading="lazy" /></li>
-              </ul>
-              <p class="x-carousel__count" aria-live="polite"><span data-current>1</span>/9</p>
-              <button class="x-carousel__btn x-carousel__btn--prev" type="button" aria-label="Slide anterior" aria-disabled="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M10 3 L5 8 L10 13" /></svg></button>
-              <button class="x-carousel__btn x-carousel__btn--next" type="button" aria-label="Próximo slide" aria-disabled="false"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3 L11 8 L6 13" /></svg></button>
-              <div class="x-carousel__dots" aria-hidden="true"><span class="is-active"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-            </div>
-            <div class="x-case__body">
-              <p class="x-case__label">Estudo de caso · publicado</p>
-              <h3>Heloísa Nail Designer — da marca ao código</h3>
-              <p>Identidade visual, pesquisa, UX e landing page de agendamento para uma nail designer de Santo André.</p>
+          <article class="x-main" aria-labelledby="case-regina">
+            <header class="x-main__head">
+              <div>
+                <p class="x-case__label">Case principal · Santo André, Grande ABC</p>
+                <h3 id="case-regina">Regina Decorações &amp; Celevia by Regina</h3>
+                <p class="x-main__sub">Uma casa de festas de 27 anos, duas formas de celebrar · Marca · UX/UI · Front-end</p>
+              </div>
+              <div class="x-main__logos">
+                <img src="logo-regina.png" alt="Logo Regina Decorações" width="1748" height="1240" />
+                <img src="logo-celevia-v2.png" alt="Logo Celevia by Regina" width="1254" height="1254" />
+              </div>
+              <div class="x-main__intro prose">
+                <p>A Regina Decorações é o negócio de festas da minha mãe, em Santo André, desde 1999. A Celevia by Regina é a nova submarca de aluguel de kits: pegue, monte e devolva. <strong>Levou. Montou. Celebrou.</strong></p>
+              </div>
               <p class="x-tags">
-                <span class="pill x-tag">Marca</span> <span class="pill x-tag">UX/UI</span> <span class="pill x-tag">Front-end</span>
+                <span class="pill x-tag">Pesquisa</span> <span class="pill x-tag">Heurísticas de Nielsen</span> <span class="pill x-tag">Proto-personas</span> <span class="pill x-tag">Jornada</span> <span class="pill x-tag">Identidade visual</span> <span class="pill x-tag">Design system</span> <span class="pill x-tag">HTML/CSS/JS</span>
               </p>
-              <a class="btn x-btn-accent" href="estudo-de-caso-heloisa.pdf" download>Baixar estudo de caso (PDF)</a>
+            </header>
+
+            <div class="x-part">
+              <div class="x-part__head">
+                <div>
+                  <p class="x-case__label"><span class="x-n">a</span> · 29 slides</p>
+                  <h4>Estudo de caso</h4>
+                </div>
+                <a class="btn x-btn-accent" href="estudo-de-caso-regina-celevia.pdf" download>Baixar estudo de caso (PDF)</a>
+              </div>
+              <div class="x-carousel" role="region" aria-roledescription="carrossel" aria-label="Estudo de caso Regina Decorações e Celevia by Regina" tabindex="0">
+                <ul class="x-carousel__track">
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="1 de 29"><img src="case-01.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 1 de 29" width="1280" height="720" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="2 de 29"><img src="case-02.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 2 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="3 de 29"><img src="case-03.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 3 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="4 de 29"><img src="case-04.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 4 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="5 de 29"><img src="case-05.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 5 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="6 de 29"><img src="case-06.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 6 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="7 de 29"><img src="case-07.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 7 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="8 de 29"><img src="case-08.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 8 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="9 de 29"><img src="case-09.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 9 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="10 de 29"><img src="case-10.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 10 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="11 de 29"><img src="case-11.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 11 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="12 de 29"><img src="case-12.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 12 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="13 de 29"><img src="case-13.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 13 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="14 de 29"><img src="case-14.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 14 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="15 de 29"><img src="case-15.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 15 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="16 de 29"><img src="case-16.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 16 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="17 de 29"><img src="case-17.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 17 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="18 de 29"><img src="case-18.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 18 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="19 de 29"><img src="case-19.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 19 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="20 de 29"><img src="case-20.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 20 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="21 de 29"><img src="case-21.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 21 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="22 de 29"><img src="case-22.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 22 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="23 de 29"><img src="case-23.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 23 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="24 de 29"><img src="case-24.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 24 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="25 de 29"><img src="case-25.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 25 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="26 de 29"><img src="case-26.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 26 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="27 de 29"><img src="case-27.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 27 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="28 de 29"><img src="case-28.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 28 de 29" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="29 de 29"><img src="case-29.jpg" alt="Estudo de caso Regina Decorações e Celevia by Regina, slide 29 de 29" width="1280" height="720" loading="lazy" /></li>
+                </ul>
+                <p class="x-carousel__count" aria-live="polite"><span data-current>1</span>/29</p>
+                <button class="x-carousel__btn x-carousel__btn--prev" type="button" aria-label="Slide anterior" aria-disabled="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M10 3 L5 8 L10 13" /></svg></button>
+                <button class="x-carousel__btn x-carousel__btn--next" type="button" aria-label="Próximo slide" aria-disabled="false"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3 L11 8 L6 13" /></svg></button>
+                <div class="x-carousel__progress" aria-hidden="true"><span></span></div>
+              </div>
+            </div>
+
+            <div class="x-part">
+              <div class="x-part__head">
+                <div>
+                  <p class="x-case__label"><span class="x-n">b</span> · 10 páginas</p>
+                  <h4>Manual de marca Celevia</h4>
+                </div>
+                <a class="btn x-btn-accent" href="manual-de-marca-celevia.pdf" download>Baixar manual de marca (PDF)</a>
+              </div>
+              <div class="x-carousel" role="region" aria-roledescription="carrossel" aria-label="Manual de marca Celevia by Regina" tabindex="0">
+                <ul class="x-carousel__track">
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="1 de 10"><img src="manual-01.jpg" alt="Manual de marca Celevia by Regina, página 1 de 10" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="2 de 10"><img src="manual-02.jpg" alt="Manual de marca Celevia by Regina, página 2 de 10" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="3 de 10"><img src="manual-03.jpg" alt="Manual de marca Celevia by Regina, página 3 de 10" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="4 de 10"><img src="manual-04.jpg" alt="Manual de marca Celevia by Regina, página 4 de 10" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="5 de 10"><img src="manual-05.jpg" alt="Manual de marca Celevia by Regina, página 5 de 10" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="6 de 10"><img src="manual-06.jpg" alt="Manual de marca Celevia by Regina, página 6 de 10" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="7 de 10"><img src="manual-07.jpg" alt="Manual de marca Celevia by Regina, página 7 de 10" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="8 de 10"><img src="manual-08.jpg" alt="Manual de marca Celevia by Regina, página 8 de 10" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="9 de 10"><img src="manual-09.jpg" alt="Manual de marca Celevia by Regina, página 9 de 10" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="10 de 10"><img src="manual-10.jpg" alt="Manual de marca Celevia by Regina, página 10 de 10" width="1280" height="720" loading="lazy" /></li>
+                </ul>
+                <p class="x-carousel__count" aria-live="polite"><span data-current>1</span>/10</p>
+                <button class="x-carousel__btn x-carousel__btn--prev" type="button" aria-label="Página anterior" aria-disabled="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M10 3 L5 8 L10 13" /></svg></button>
+                <button class="x-carousel__btn x-carousel__btn--next" type="button" aria-label="Próxima página" aria-disabled="false"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3 L11 8 L6 13" /></svg></button>
+                <div class="x-carousel__dots" aria-hidden="true"><span class="is-active"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              </div>
+            </div>
+
+            <div class="x-part">
+              <div class="x-site">
+                <p class="x-case__label"><span class="x-n">c</span> · Front-end</p>
+                <h4>Site</h4>
+                <p>Site da Regina Decorações com a aba Celevia by Regina: portfólio por tipo de festa, orçamento guiado pelo WhatsApp, contrato de locação preenchível e aluguel de kits com datas, caução e checkout.</p>
+                <p class="x-site__cta"><a class="btn x-btn-accent" href="#">Ver site</a> <span class="fineprint">link publicado em breve</span></p>
+              </div>
             </div>
           </article>
           <article class="x-sketch">
@@ -911,7 +1025,7 @@
               </p>
             </div>
           </article>
-          <p class="fineprint">Mais estudos de caso chegando em breve.</p>
+          <p class="fineprint">Novos estudos de caso chegando em breve.</p>
         </section>
 
         <section class="section" id="contato" data-nav="Contato">
@@ -933,7 +1047,7 @@
         </section>
       </main>
       <footer class="foot">
-        <p>Nathália Nishimuta · UX/UI Designer em formação · São Paulo, Brasil</p>
+        <p><img class="x-foot-mark" src="logo-nathalia-mark.png" alt="" width="319" height="313" />Nathália Nishimuta · UX/UI Designer em formação · São Paulo, Brasil</p>
         <nav aria-label="Voltar às seções" data-auto></nav>
         <a class="badge" href="https://hark.com/" target="_blank" rel="noopener"
           ><span class="hark-mark"></span><span>built by hark</span></a
@@ -942,12 +1056,11 @@
     </div>
     <script src="hark.js"></script>
     <script>
-      (function () {
-        const root = document.getElementById("helo-carousel");
-        if (!root) return;
+      document.querySelectorAll(".x-carousel").forEach(function (root) {
         const track = root.querySelector(".x-carousel__track");
         const slides = track.children;
         const dots = root.querySelectorAll(".x-carousel__dots span");
+        const bar = root.querySelector(".x-carousel__progress span");
         const current = root.querySelector("[data-current]");
         const prev = root.querySelector(".x-carousel__btn--prev");
         const next = root.querySelector(".x-carousel__btn--next");
@@ -958,6 +1071,7 @@
           index = i;
           current.textContent = i + 1;
           dots.forEach((d, n) => d.classList.toggle("is-active", n === i));
+          if (bar) bar.style.width = ((i + 1) / slides.length) * 100 + "%";
           prev.setAttribute("aria-disabled", String(i === 0));
           next.setAttribute("aria-disabled", String(i === slides.length - 1));
         }
@@ -988,7 +1102,26 @@
           else if (e.key === "End") { e.preventDefault(); go(slides.length - 1); }
         });
         window.addEventListener("resize", () => { track.scrollLeft = index * track.clientWidth; });
-      })();
+        if (bar) bar.style.width = (1 / slides.length) * 100 + "%";
+        let drag = null;
+        track.addEventListener("pointerdown", (e) => {
+          if (e.pointerType !== "mouse") return;
+          drag = { x: e.clientX, left: track.scrollLeft, start: index };
+          track.style.scrollSnapType = "none";
+          track.style.scrollBehavior = "auto";
+        });
+        window.addEventListener("pointermove", (e) => { if (drag) track.scrollLeft = drag.left - (e.clientX - drag.x); });
+        window.addEventListener("pointerup", (e) => {
+          if (!drag) return;
+          const dx = e.clientX - drag.x;
+          const start = drag.start;
+          drag = null;
+          track.style.scrollSnapType = "";
+          track.style.scrollBehavior = "";
+          go(Math.abs(dx) > 40 ? start + (dx < 0 ? 1 : -1) : start);
+        });
+        track.addEventListener("dragstart", (e) => e.preventDefault());
+      });
       (function () {
         if (!document.documentElement.classList.contains("x-js")) return;
         const items = document.querySelectorAll(".main .section > *");
