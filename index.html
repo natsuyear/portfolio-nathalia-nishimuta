@@ -1,0 +1,1002 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfólio Nathália Nishimuta — UX/UI Designer em formação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap"
+    />
+    <link rel="stylesheet" href="hark.css" />
+    <link rel="stylesheet" href="hark-hero.css" />
+    <style>
+      /* ---------- Editorial: warm cream, charcoal ink, terracotta and gold ---------- */
+      :root {
+        --x-cream: light-dark(#f4ecdd, #1c1915);
+        --x-card: light-dark(#fbf7ee, #25211c);
+        --x-card-2: light-dark(#efe5d2, #2d2822);
+        --x-ink: light-dark(#1c1915, #f4ecdd);
+        --x-ink-2: light-dark(#5e5347, #bfb2a0);
+        --x-terra: light-dark(#c2633a, #d9784d);
+        --x-terra-text: light-dark(#9a4824, #e59670);
+        --x-on-terra: light-dark(#fbf7ee, #1c1915);
+        --x-gold: #c9a35b;
+        --x-gold-2: #e6c98a;
+        --x-gold-text: light-dark(#7e5f27, #e6c98a);
+        --x-line: light-dark(rgb(201 163 91 / 0.6), rgb(201 163 91 / 0.42));
+        --x-line-soft: light-dark(rgb(201 163 91 / 0.32), rgb(201 163 91 / 0.22));
+        --x-grid: light-dark(rgb(126 95 39 / 0.13), rgb(230 201 138 / 0.07));
+        --x-focus: light-dark(#7e5f27, #e6c98a);
+        --x-glow: 0 0 0 1px light-dark(rgb(194 99 58 / 0.4), rgb(229 150 112 / 0.4)),
+          0 22px 44px -24px light-dark(rgb(154 72 36 / 0.5), rgb(0 0 0 / 0.75));
+        --x-lift: 0 26px 50px -28px light-dark(rgb(28 25 21 / 0.45), rgb(0 0 0 / 0.8));
+        --x-serif: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
+        --x-mono: "Geist Mono", ui-monospace, monospace;
+        --x-dur: 0.8s;
+
+        --text-primary: var(--x-ink);
+        --text-secondary: var(--x-ink-2);
+        --fill-primary: var(--x-ink);
+        --text-primary-on: var(--x-cream);
+        --fill-primary-on: var(--x-cream);
+        --fill-tertiary: var(--x-card-2);
+        --stroke-primary: var(--x-line);
+        --stroke-secondary: var(--x-line-soft);
+        --tap: 48px;
+      }
+      html, body { overflow-x: clip; }
+      body {
+        background-color: var(--x-cream);
+        background-image: radial-gradient(circle at 1px 1px, var(--x-grid) 1px, transparent 1.5px);
+        background-size: 24px 24px;
+        color: var(--x-ink);
+      }
+      :focus-visible { outline: 2px solid var(--x-focus); outline-offset: 3px; }
+      ::selection { background: rgb(194 99 58 / 0.25); }
+
+      /* Nav: cream glass, mono labels */
+      .nav.glass {
+        background: color-mix(in srgb, var(--x-cream) 86%, transparent);
+        border: 1px solid var(--x-line);
+        box-shadow: 0 12px 30px -20px rgb(28 25 21 / 0.4);
+      }
+      .nav :focus-visible { outline-color: var(--x-focus); outline-offset: 1px; }
+      .nav .seg { background: transparent; gap: 2px; }
+      .nav .seg a {
+        display: flex;
+        align-items: center;
+        min-height: var(--tap);
+        padding: 0 14px;
+        font: 400 12px/1 var(--x-mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--x-ink-2);
+        transition: color var(--dur-quick) ease, background var(--dur-quick) ease;
+      }
+      .nav .seg a:hover { color: var(--x-terra-text); }
+      .nav .seg a[aria-current="true"] { background: var(--x-ink); color: var(--x-cream); }
+      .nav .theme-btn { width: var(--tap); height: var(--tap); background: transparent; color: var(--x-ink); }
+      .nav .theme-btn:hover { box-shadow: inset 0 0 0 100px rgb(201 163 91 / 0.18); }
+
+      /* Sections: gold hairlines, numbered mono eyebrows, serif headings */
+      .main .section { position: relative; border-top: 1px solid var(--x-line); scroll-margin-top: 88px; }
+      .head__eyebrow.x-eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font: 400 12px/1.4 var(--x-mono);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--x-gold-text);
+      }
+      .x-eyebrow::after { content: ""; flex: 0 1 72px; height: 1px; background: var(--x-gold); }
+      .x-n { color: var(--x-terra-text); }
+      .main .head h2 { font: 400 clamp(36px, 5.2vw, 60px)/1.02 var(--x-serif); letter-spacing: -0.012em; color: var(--x-ink); }
+      .main .head h2 em, .x-name em { font-style: italic; color: var(--x-terra-text); }
+      .main .head__sub { color: var(--x-ink-2); }
+      .x-hand-sub { font: 400 12px/1.5 var(--x-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+      .main .prose { font-size: 17px; line-height: 1.65; }
+      .main .fineprint { font: 400 12px/1.6 var(--x-mono); letter-spacing: 0.04em; color: var(--x-ink-2); }
+
+      /* Links: a gold underline that warms to terracotta */
+      .main .link, .foot .link {
+        color: var(--x-ink);
+        text-decoration: underline;
+        text-decoration-color: var(--x-gold);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 5px;
+        transition: color var(--dur-quick) ease, text-decoration-color var(--dur-quick) ease, text-underline-offset var(--dur-quick) ease;
+      }
+      .main .link:hover { color: var(--x-terra-text); text-decoration-color: var(--x-terra); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+
+      /* Buttons */
+      .main .btn {
+        min-height: var(--tap);
+        padding: 0 22px;
+        border-radius: var(--r-pill);
+        border: 1px solid var(--x-ink);
+        background: transparent;
+        color: var(--x-ink);
+        font: 500 14px/1.2 var(--sans);
+        letter-spacing: 0.01em;
+        transition: background var(--dur-quick) ease, color var(--dur-quick) ease, border-color var(--dur-quick) ease, box-shadow 0.3s ease, transform 0.3s var(--ease-out);
+      }
+      .main .btn[target="_blank"]::after { color: inherit; }
+      .main .btn:hover { background: var(--x-ink); color: var(--x-cream); box-shadow: none; transform: translateY(-1px); }
+      .main .x-btn-accent { background: var(--x-terra-text); border-color: var(--x-terra-text); color: var(--x-on-terra); }
+      .main .x-btn-accent:hover { background: var(--x-ink); border-color: var(--x-ink); color: var(--x-cream); box-shadow: var(--x-glow); }
+
+      /* Chips, pills, tags */
+      .main .chip { background: transparent; border: 1px solid var(--x-line); color: var(--x-ink); font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.04em; padding: 4px 12px 4px 10px; }
+      .main .x-chip-done::before { background: var(--x-gold); box-shadow: none; }
+      .main .x-chip-now::before { background: var(--x-terra); box-shadow: 0 0 0 3px rgb(194 99 58 / 0.18); }
+      .main .pill { background: transparent; border: 1px solid var(--x-line); color: var(--x-ink-2); font: 400 12px/1.6 var(--x-mono); padding: 0 10px; }
+      .main .x-tag { color: var(--x-terra-text); border-color: rgb(194 99 58 / 0.45); }
+      .foot { border-top: 1px solid var(--x-line); padding-top: 24px; }
+      .foot nav a { display: inline-flex; align-items: center; min-height: var(--tap); padding-inline: 14px; background: transparent; border: 1px solid var(--x-line); color: var(--x-ink); font: 400 12px/1 var(--x-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+      .foot nav a:hover { box-shadow: none; border-color: var(--x-terra); color: var(--x-terra-text); }
+
+      /* Fine-line drawings */
+      .x-ink { overflow: visible; }
+      .x-ink path, .x-doodle path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+      .x-doodle { position: absolute; pointer-events: none; overflow: visible; }
+
+      /* Hero: line grid and soft terracotta light behind */
+      .x-hero {
+        position: relative;
+        isolation: isolate;
+        display: grid;
+        grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+        gap: clamp(40px, 6vw, 80px);
+        align-items: center;
+        padding-block: clamp(44px, 7vw, 96px) clamp(40px, 6vw, 80px);
+      }
+      .x-hero::before {
+        content: "";
+        position: absolute;
+        z-index: -2;
+        inset: -60px calc(var(--gutter) * -1) 0;
+        background-image: linear-gradient(var(--x-grid) 1px, transparent 1px), linear-gradient(90deg, var(--x-grid) 1px, transparent 1px);
+        background-size: 56px 56px;
+        -webkit-mask-image: radial-gradient(ellipse 70% 75% at 62% 45%, #000 25%, transparent 78%);
+        mask-image: radial-gradient(ellipse 70% 75% at 62% 45%, #000 25%, transparent 78%);
+      }
+      .x-blobs { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+      .x-blobs span { position: absolute; border-radius: 50%; filter: blur(48px); }
+      .x-blobs span:nth-child(1) { width: min(460px, 70vw); aspect-ratio: 1; right: 2%; top: 4%; background: radial-gradient(circle, rgb(194 99 58 / 0.36), transparent 66%); }
+      .x-blobs span:nth-child(2) { width: min(340px, 60vw); aspect-ratio: 1; left: -6%; bottom: 0; background: radial-gradient(circle, rgb(230 201 138 / 0.42), transparent 66%); }
+      .x-blobs span:nth-child(3) { width: 220px; aspect-ratio: 1; left: 44%; top: -4%; background: radial-gradient(circle, rgb(194 99 58 / 0.2), transparent 66%); }
+      .x-hero__eyebrow { display: flex; align-items: center; gap: 12px; font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--x-gold-text); }
+      .x-hero__eyebrow::before { content: ""; width: 40px; height: 1px; background: var(--x-gold); }
+      .x-hero h1 { margin-top: 22px; }
+      .x-name { display: block; font: 400 clamp(60px, 9.4vw, 120px)/0.9 var(--x-serif); letter-spacing: -0.025em; }
+      .x-name em { display: block; }
+      .x-role { display: flex; align-items: center; gap: 12px; margin-top: 22px; font: 400 13px/1.4 var(--x-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--x-ink-2); }
+      .x-hero__sub { margin-top: 28px; max-width: 32ch; font: 400 clamp(22px, 2.4vw, 28px)/1.3 var(--x-serif); color: var(--x-ink); }
+      .x-hero__meta { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--x-line-soft); max-width: 52ch; font: 400 12px/1.7 var(--x-mono); letter-spacing: 0.04em; color: var(--x-ink-2); }
+      .x-next {
+        margin-top: 30px;
+        max-width: 420px;
+        display: grid;
+        gap: 12px;
+        padding: 22px 24px 24px;
+        background: color-mix(in srgb, var(--x-card) 78%, transparent);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        border: 1px solid var(--x-line);
+        border-radius: var(--r-m);
+        box-shadow: var(--x-lift);
+      }
+      .x-next__head { display: flex; align-items: center; gap: 10px; font: 400 12px/1 var(--x-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--x-gold-text); }
+      .x-next__head::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--x-terra); box-shadow: 0 0 0 4px rgb(194 99 58 / 0.18); }
+      .x-next .btn { justify-self: start; }
+
+      /* Hero photo: an early-2000s compact digital camera */
+      .x-collage { position: relative; justify-self: center; width: min(100%, 480px); padding: 8px 0 64px; }
+      .x-cam {
+        position: relative;
+        margin: 0;
+        padding: 12px 14px 10px;
+        border-radius: 28px 28px 22px 22px;
+        background: linear-gradient(155deg, #4a433b 0%, #2a2520 38%, #1c1915 70%, #302a24 100%);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.14), inset 0 -2px 0 rgb(0 0 0 / 0.45), 0 0 0 1px rgb(201 163 91 / 0.45), var(--x-lift), 0 40px 80px -40px rgb(154 72 36 / 0.45);
+        rotate: -2deg;
+        color: #e9dfcd;
+      }
+      .x-cam__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 2px 8px 10px; font: 400 12px/1 var(--x-mono); letter-spacing: 0.14em; color: #bfb2a0; }
+      .x-cam__top b { font-weight: 400; color: var(--x-gold-2); }
+      .x-cam__bits { display: flex; align-items: center; gap: 10px; }
+      .x-cam__vf { width: 26px; height: 14px; border-radius: 4px; background: linear-gradient(135deg, #0e0c0a, #3a342d); box-shadow: inset 0 0 0 1px rgb(201 163 91 / 0.5); }
+      .x-cam__led { width: 6px; height: 6px; border-radius: 50%; background: #7fbf6a; box-shadow: 0 0 6px #7fbf6a; }
+      .x-cam__screen {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #0e0c0a;
+        box-shadow: 0 0 0 4px #121010, 0 0 0 5px rgb(201 163 91 / 0.35), inset 0 0 0 1px rgb(0 0 0 / 0.6);
+      }
+      .x-cam__screen img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; filter: sepia(0.2) saturate(1.08) contrast(1.06) brightness(1.03); }
+      .x-cam__screen::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: radial-gradient(ellipse at 50% 46%, transparent 52%, rgb(24 12 4 / 0.6) 100%), linear-gradient(rgb(255 168 90 / 0.08), rgb(255 168 90 / 0.08));
+      }
+      .x-cam__screen::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.5;
+        mix-blend-mode: overlay;
+        background-image: repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.22) 0 1px, transparent 1px 3px),
+          url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 0.86 0 0 0 0 0.7 0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      }
+      .x-hud { position: absolute; inset: 0; z-index: 2; pointer-events: none; font: 400 12px/1 var(--x-mono); letter-spacing: 0.08em; color: #fff4e2; text-shadow: 0 1px 2px rgb(0 0 0 / 0.8); }
+      .x-hud > * { position: absolute; display: flex; align-items: center; gap: 6px; }
+      .x-hud__rec { top: 12px; left: 12px; }
+      .x-hud__rec::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #ff4f2e; box-shadow: 0 0 8px rgb(255 79 46 / 0.8); }
+      .x-hud__mode { top: 12px; left: 50%; translate: -50% 0; opacity: 0.85; }
+      .x-hud__batt { top: 12px; right: 12px; }
+      .x-batt { position: relative; width: 24px; height: 12px; border: 1.5px solid #fff4e2; border-radius: 2px; padding: 1.5px; display: flex; gap: 1.5px; box-shadow: 0 1px 2px rgb(0 0 0 / 0.6); }
+      .x-batt::after { content: ""; position: absolute; right: -4px; top: 3px; width: 2px; height: 4px; background: #fff4e2; border-radius: 0 1px 1px 0; }
+      .x-batt i { flex: 1; background: #fff4e2; }
+      .x-hud__count { bottom: 12px; left: 12px; }
+      .x-hud__count::before { content: ""; width: 9px; height: 11px; border: 1.5px solid #fff4e2; border-radius: 1px 4px 1px 1px; }
+      .x-hud__date { bottom: 10px; right: 12px; font-size: 16px; letter-spacing: 0.1em; color: #ff9a3c; text-shadow: 0 0 3px rgb(255 120 40 / 0.9), 0 0 10px rgb(255 120 40 / 0.5), 0 1px 1px rgb(0 0 0 / 0.6); }
+      .x-hud__focus { left: 50%; top: 46%; width: 34%; height: 40%; translate: -50% -50%; opacity: 0.7;
+        background:
+          linear-gradient(#fff4e2, #fff4e2) top left / 14px 1.5px no-repeat, linear-gradient(#fff4e2, #fff4e2) top left / 1.5px 14px no-repeat,
+          linear-gradient(#fff4e2, #fff4e2) top right / 14px 1.5px no-repeat, linear-gradient(#fff4e2, #fff4e2) top right / 1.5px 14px no-repeat,
+          linear-gradient(#fff4e2, #fff4e2) bottom left / 14px 1.5px no-repeat, linear-gradient(#fff4e2, #fff4e2) bottom left / 1.5px 14px no-repeat,
+          linear-gradient(#fff4e2, #fff4e2) bottom right / 14px 1.5px no-repeat, linear-gradient(#fff4e2, #fff4e2) bottom right / 1.5px 14px no-repeat; }
+      .x-cam__base { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 8px 4px; }
+      .x-cam__base > span:first-child { font: italic 400 24px/1 var(--x-serif); color: #f4ecdd; }
+      .x-cam__btns { display: flex; align-items: center; gap: 8px; }
+      .x-cam__btns i { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(145deg, #4a433b, #1c1915); box-shadow: inset 0 0 0 1px rgb(201 163 91 / 0.45); }
+      .x-cam__btns i:last-child { width: 30px; height: 30px; background: radial-gradient(circle, #2a2520 30%, #3a342d 32%, #1c1915 100%); }
+      .x-logo {
+        position: absolute;
+        right: -6px; bottom: 0;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        width: clamp(112px, 15vw, 136px);
+        aspect-ratio: 1;
+        padding: 24px;
+        border-radius: 50%;
+        background: var(--x-card);
+        border: 1px solid var(--x-gold);
+        box-shadow: var(--x-lift);
+      }
+      .x-logo::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; border: 1px solid var(--x-line-soft); }
+      .x-logo svg { display: block; width: 100%; height: auto; color: var(--x-terra-text); }
+      .x-logo svg path { stroke-width: 1.6; }
+      /* 01 Sobre mim */
+      .x-about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 300px); gap: clamp(28px, 5vw, 72px); align-items: start; }
+      .x-margin { padding: 6px 0 6px 24px; border-left: 1px solid var(--x-gold); }
+      .x-margin__label { font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--x-gold-text); }
+      .x-margin__note { margin-top: 10px; font: italic 400 30px/1.12 var(--x-serif); color: var(--x-terra-text); }
+      .x-margin__brain { display: block; width: 112px; height: 84px; margin-top: 18px; color: var(--x-gold-text); }
+      .x-origin {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(190px, 250px);
+        gap: clamp(24px, 5vw, 56px);
+        align-items: center;
+        margin-top: clamp(32px, 4vw, 48px);
+        padding: clamp(22px, 3.4vw, 36px);
+        background: var(--x-card);
+        border: 1px solid var(--x-line);
+        border-radius: var(--r-l);
+      }
+      .x-origin__hand { font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--x-gold-text); }
+      .x-origin h3 { margin-top: 12px; font: 400 clamp(28px, 3.4vw, 36px)/1.08 var(--x-serif); }
+      .x-origin p + p { margin-top: 8px; }
+      .x-slot { margin: 0; padding: 10px; background: var(--x-card-2); border: 1px solid var(--x-line-soft); border-radius: var(--r-s); }
+      .x-slot__photo { display: grid; place-items: center; aspect-ratio: 4 / 3; border: 1px dashed var(--x-gold); border-radius: 8px; background: var(--x-card); font-size: 28px; }
+      .x-slot__photo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+      .x-slot figcaption { padding: 10px 4px 2px; text-align: center; font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.04em; color: var(--x-ink-2); }
+
+      /* 02 Certificados */
+      .x-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(18px, 2.4vw, 28px); margin: 0; padding: 0; list-style: none; }
+      .x-cert {
+        display: flex;
+        flex-direction: column;
+        padding: 14px 14px 6px;
+        background: var(--x-card);
+        border: 1px solid var(--x-line);
+        border-radius: var(--r-m);
+        transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.4s ease;
+      }
+      .x-cert:hover, .x-cert:focus-within { transform: translateY(-4px); box-shadow: var(--x-glow); border-color: transparent; }
+      .x-cert__img { display: block; overflow: hidden; border-radius: 10px; border: 1px solid var(--x-line-soft); background: #fff; }
+      .x-cert__img img { width: 100%; height: auto; object-fit: contain; transition: transform 0.6s var(--ease-out); }
+      .x-cert:hover .x-cert__img img { transform: scale(1.025); }
+      .x-cert__date { margin-top: 18px; font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.14em; color: var(--x-gold-text); }
+      .x-cert h3 { margin-top: 8px; font: 400 26px/1.1 var(--x-serif); }
+      .x-cert__by { margin-top: 8px; margin-bottom: 16px; font: var(--type-small); color: var(--x-ink-2); }
+      .x-cert__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--x-line-soft); }
+      .main .x-cert__verify { display: inline-flex; align-items: center; min-height: var(--tap); margin: 0; font: var(--type-label); }
+
+      /* 03 Em formação and 04 Workshops: a gold timeline */
+      .x-trail { position: relative; display: grid; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--x-line-soft); }
+      .x-trail::before { content: ""; position: absolute; left: 7.5px; top: 34px; bottom: 34px; width: 1px; background: linear-gradient(var(--x-gold), var(--x-line-soft)); }
+      .x-trail > li { position: relative; display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; gap: 6px 24px; align-items: start; padding: 22px 0; border-bottom: 1px solid var(--x-line-soft); }
+      .x-trail__dot { position: relative; width: 16px; height: 16px; margin-top: 2px; border: 1px solid var(--x-gold); border-radius: 50%; background: var(--x-cream); }
+      .x-trail__dot::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--x-terra); transition: transform 0.3s var(--ease-out); }
+      .x-trail > li:hover .x-trail__dot::after { transform: scale(1.5); }
+      .x-trail__when { margin-bottom: 8px; font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--x-gold-text); }
+      .x-trail__title { font: 400 clamp(22px, 2.4vw, 26px)/1.15 var(--x-serif); }
+      .x-trail__by { margin-top: 4px; font: var(--type-small); color: var(--x-ink-2); }
+      .x-trail > li > .chip { margin-top: 2px; }
+      .x-ws-note { display: flex; justify-content: flex-end; margin: -8px 0 12px; font: italic 400 26px/1.1 var(--x-serif); color: var(--x-terra-text); }
+      .x-trail--ws > li { grid-template-columns: 16px minmax(0, 1fr) minmax(0, 200px); gap: 8px 32px; }
+      .x-trail__text { margin-top: 8px; max-width: 60ch; }
+      .x-trail__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 10px; }
+      .x-ws-print { margin: 0; padding: 6px; background: var(--x-card); border: 1px solid var(--x-line); border-radius: var(--r-s); transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out); }
+      .x-ws-print:hover { transform: translateY(-3px); box-shadow: var(--x-glow); }
+      .x-ws-print img { display: block; width: 100%; height: auto; object-fit: contain; border-radius: 8px; background: #fff; }
+
+      /* 05 Habilidades */
+      .x-notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: clamp(18px, 2.4vw, 28px); counter-reset: x-note; }
+      .x-note {
+        position: relative;
+        padding: 26px 26px 30px;
+        background: var(--x-card);
+        border: 1px solid var(--x-line);
+        border-radius: var(--r-m);
+        counter-increment: x-note;
+        transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.4s ease;
+      }
+      .x-note::before { content: "0" counter(x-note); display: block; font: 400 12px/1 var(--x-mono); letter-spacing: 0.16em; color: var(--x-gold-text); }
+      .x-note:hover { transform: translateY(-4px); box-shadow: var(--x-glow); border-color: transparent; }
+      .x-note--cream { background: linear-gradient(170deg, var(--x-card), color-mix(in srgb, var(--x-gold-2) 20%, var(--x-card))); }
+      .x-note--blush { background: linear-gradient(170deg, var(--x-card), color-mix(in srgb, var(--x-terra) 12%, var(--x-card))); }
+      .x-note h3 { margin: 22px 0 16px; padding-bottom: 14px; border-bottom: 1px solid var(--x-line-soft); font: 400 34px/1 var(--x-serif); }
+      .x-note ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+      .x-note li { position: relative; padding-left: 22px; }
+      .x-note li::before { content: ""; position: absolute; left: 0; top: 0.75em; width: 12px; height: 1px; background: var(--x-terra); }
+      .x-note small { color: var(--x-ink-2); }
+      .x-note__doodle { top: 22px; right: 22px; width: 30px; height: 30px; color: var(--x-gold-text); }
+
+      /* 06 Projetos: the published case with its carousel, and the next one as a blueprint */
+      .x-case {
+        display: grid;
+        grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+        gap: clamp(20px, 3.6vw, 44px);
+        align-items: center;
+        margin-bottom: clamp(20px, 3vw, 32px);
+        padding: clamp(12px, 1.8vw, 18px);
+        background: var(--x-card);
+        border: 1px solid var(--x-line);
+        border-radius: var(--r-l);
+        box-shadow: var(--x-lift);
+      }
+      .x-carousel { position: relative; border-radius: var(--r-s); overflow: hidden; background: var(--x-card-2); }
+      .x-carousel:focus-visible { outline: 2px solid var(--x-focus); outline-offset: 3px; }
+      .x-carousel__track {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+        margin: 0; padding: 0; list-style: none;
+      }
+      .x-carousel__track::-webkit-scrollbar { display: none; }
+      .x-carousel__slide { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; }
+      .x-carousel__slide img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+      .x-carousel__count {
+        position: absolute; top: 12px; right: 12px;
+        padding: 4px 10px;
+        border-radius: var(--r-pill);
+        background: rgb(28 25 21 / 0.74);
+        color: #f4ecdd;
+        font: 400 12px/1.4 var(--x-mono);
+        letter-spacing: 0.08em;
+        font-variant-numeric: tabular-nums;
+        pointer-events: none;
+      }
+      .x-carousel__btn {
+        position: absolute; top: 50%; translate: 0 -50%;
+        display: grid; place-items: center;
+        width: 48px; height: 48px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+      }
+      .x-carousel__btn::before {
+        content: "";
+        position: absolute; inset: 8px;
+        border-radius: 50%;
+        background: rgb(251 247 238 / 0.94);
+        box-shadow: 0 0 0 1px rgb(201 163 91 / 0.6), 0 4px 12px rgb(28 25 21 / 0.25);
+        transition: transform var(--dur-quick) var(--ease-out);
+      }
+      .x-carousel__btn:hover::before { transform: scale(1.08); }
+      .x-carousel__btn svg { position: relative; width: 16px; height: 16px; color: #1c1915; }
+      .x-carousel__btn svg path { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+      .x-carousel__btn--prev { left: 6px; }
+      .x-carousel__btn--next { right: 6px; }
+      .x-carousel__btn[aria-disabled="true"] { opacity: 0.4; cursor: default; }
+      .x-carousel.x-bump-start .x-carousel__track { animation: x-bump-start 300ms var(--ease-out); }
+      .x-carousel.x-bump-end .x-carousel__track { animation: x-bump-end 300ms var(--ease-out); }
+      @keyframes x-bump-start { 40% { transform: translateX(12px); } }
+      @keyframes x-bump-end { 40% { transform: translateX(-12px); } }
+      @media (prefers-reduced-motion: reduce) {
+        .x-carousel.x-bump-start .x-carousel__track, .x-carousel.x-bump-end .x-carousel__track { animation: none; outline: 2px solid var(--x-focus); outline-offset: -2px; }
+      }
+      .x-carousel__btn:focus-visible { outline: 2px solid #1c1915; outline-offset: -2px; box-shadow: 0 0 0 4px var(--x-gold-2) inset; border-radius: 50%; }
+      .x-carousel__dots { position: absolute; left: 0; right: 0; bottom: 10px; display: flex; justify-content: center; gap: 6px; pointer-events: none; }
+      .x-carousel__dots span { width: 7px; height: 7px; border-radius: 50%; background: rgb(255 255 255 / 0.55); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15); transition: background var(--dur-quick) ease, scale var(--dur-quick) ease; }
+      .x-carousel__dots span.is-active { background: #fff; scale: 1.3; }
+      .x-case__body { display: grid; gap: 12px; padding: 8px clamp(4px, 1.4vw, 16px) 8px 4px; }
+      .x-case__label { font: 400 12px/1.4 var(--x-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--x-gold-text); }
+      .x-case__body h3 { font: 400 clamp(30px, 3.4vw, 40px)/1.05 var(--x-serif); }
+      .x-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+      .x-case__body .btn { justify-self: start; margin-top: 8px; }
+      .x-sketch {
+        position: relative;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: clamp(28px, 4.6vw, 64px);
+        align-items: center;
+        padding: clamp(26px, 4vw, 48px);
+        border: 1px dashed var(--x-gold);
+        border-radius: var(--r-l);
+        background-color: color-mix(in srgb, var(--x-card) 55%, transparent);
+        background-image: linear-gradient(var(--x-grid) 1px, transparent 1px), linear-gradient(90deg, var(--x-grid) 1px, transparent 1px);
+        background-size: 28px 28px;
+      }
+      .x-sketch__phone { position: relative; width: clamp(116px, 15vw, 150px); }
+      .x-sketch__phone svg { display: block; width: 100%; height: auto; color: var(--x-ink-2); }
+      .x-sketch__phone svg path { stroke-width: 1.2; }
+      .x-sketch__phone svg .x-dash { stroke-dasharray: 3 4; color: var(--x-gold-text); stroke: var(--x-gold-text); }
+      .x-stamp {
+        position: absolute;
+        right: -30px; bottom: 28px;
+        padding: 8px 14px;
+        border: 1px solid var(--x-terra-text);
+        border-radius: var(--r-pill);
+        background: var(--x-cream);
+        color: var(--x-terra-text);
+        font: 400 12px/1 var(--x-mono);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        rotate: -8deg;
+        box-shadow: 0 0 0 3px var(--x-cream), 0 0 0 4px rgb(194 99 58 / 0.35);
+      }
+      .x-sketch h3 { font: 400 clamp(26px, 3vw, 34px)/1.1 var(--x-serif); }
+      .x-sketch p + p { margin-top: 12px; }
+      .x-sketch .x-tags { margin-top: 18px; }
+
+      /* 07 Contato: the one charcoal band */
+      .x-torn-wrap {
+        --x-ink: #f4ecdd;
+        --x-ink-2: #cfc3b1;
+        --x-cream: #1c1915;
+        --x-gold-text: #e6c98a;
+        --x-terra-text: #e59670;
+        --x-on-terra: #1c1915;
+        --x-focus: #e6c98a;
+        --x-line: rgb(201 163 91 / 0.5);
+        --text-primary: #f4ecdd;
+        --text-secondary: #cfc3b1;
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        border-radius: var(--r-xl);
+        background: light-dark(#1c1915, #2a251f);
+        color: #f4ecdd;
+        box-shadow: 0 0 0 1px rgb(201 163 91 / 0.45);
+      }
+      .x-torn-wrap::before { content: ""; position: absolute; z-index: -1; width: 520px; aspect-ratio: 1; right: -140px; top: -200px; border-radius: 50%; background: radial-gradient(circle, rgb(194 99 58 / 0.45), transparent 66%); filter: blur(40px); }
+      .x-torn-wrap::after { content: ""; position: absolute; z-index: -1; width: 380px; aspect-ratio: 1; left: -120px; bottom: -220px; border-radius: 50%; background: radial-gradient(circle, rgb(201 163 91 / 0.28), transparent 66%); filter: blur(40px); }
+      .x-torn {
+        position: relative;
+        padding: clamp(44px, 7vw, 96px) clamp(24px, 6vw, 88px);
+        background-image: linear-gradient(rgb(230 201 138 / 0.06) 1px, transparent 1px), linear-gradient(90deg, rgb(230 201 138 / 0.06) 1px, transparent 1px);
+        background-size: 56px 56px;
+      }
+      .x-torn__hand { font: italic 400 clamp(48px, 8vw, 96px)/0.95 var(--x-serif); color: var(--x-gold-2); letter-spacing: -0.02em; }
+      .x-torn .head { grid-template-columns: 1fr; margin-top: 22px; margin-bottom: 28px; padding-top: 22px; border-top: 1px solid var(--x-line); }
+      .x-torn .head h2 { color: #f4ecdd; font-size: clamp(30px, 4vw, 44px); }
+      .x-torn .head__sub { justify-self: start; text-align: left; max-width: 52ch; color: #cfc3b1; }
+      .x-torn__heart { top: clamp(36px, 6vw, 80px); right: clamp(24px, 6vw, 88px); width: 40px; height: 36px; color: #e59670; }
+      .x-torn .links { gap: 12px; }
+
+      /* Motion: hero entrance, scroll fade-ins, the REC blink, drifting light */
+      @media (prefers-reduced-motion: no-preference) {
+        .x-hero__copy > *, .x-collage { animation: x-rise 1s var(--ease-out) both; }
+        .x-hero__copy > :nth-child(2) { animation-delay: 0.08s; }
+        .x-hero__copy > :nth-child(3) { animation-delay: 0.18s; }
+        .x-hero__copy > :nth-child(4) { animation-delay: 0.26s; }
+        .x-hero__copy > :nth-child(5) { animation-delay: 0.34s; }
+        .x-collage { animation-delay: 0.2s; }
+        .x-hud__rec::before { animation: x-blink 1.6s steps(1) infinite; }
+        .x-blobs span { animation: x-drift 18s ease-in-out infinite alternate; }
+        .x-blobs span:nth-child(2) { animation-duration: 22s; animation-direction: alternate-reverse; }
+        .x-js .main .section > * { opacity: 0; transform: translateY(22px); transition: opacity var(--x-dur) var(--ease-out), transform var(--x-dur) var(--ease-out); }
+        .x-js .main .section > .is-in { opacity: 1; transform: none; }
+      }
+      @keyframes x-rise { from { opacity: 0; transform: translateY(18px); } }
+      @keyframes x-blink { 50% { opacity: 0.15; } }
+      @keyframes x-drift { to { transform: translate(-24px, 18px) scale(1.08); } }
+
+      @media (max-width: 860px) {
+        .x-hero, .x-about, .x-case { grid-template-columns: minmax(0, 1fr); }
+        .x-collage { width: min(100%, 440px); }
+        .x-margin { max-width: 360px; }
+        .x-origin { grid-template-columns: minmax(0, 1fr); }
+        .x-slot { width: min(100%, 280px); }
+      }
+      @media (max-width: 680px) {
+        .x-sketch { grid-template-columns: minmax(0, 1fr); }
+        .x-sketch__phone { justify-self: center; }
+        .x-stamp { right: -18px; }
+        .x-trail > li, .x-trail--ws > li { grid-template-columns: 16px minmax(0, 1fr); gap: 6px 18px; }
+        .x-trail > li > .chip { grid-column: 2; justify-self: start; margin-top: 6px; }
+        .x-ws-print { grid-column: 2; justify-self: start; width: min(100%, 240px); margin-top: 6px; }
+        .x-ws-note { justify-content: flex-start; margin-top: 0; }
+        .x-cam { rotate: -1deg; padding: 10px 10px 8px; border-radius: 22px 22px 18px 18px; }
+        .x-hud__mode { display: none; }
+        .x-hud__date { font-size: 14px; }
+        .x-logo { right: 0; width: 104px; padding: 20px; }
+        .x-torn__heart { width: 30px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .x-cert, .x-note, .x-ws-print, .main .btn, .main .link, .nav .seg a, .x-cert__img img, .x-trail__dot::after, .x-carousel__btn::before { transition: none; }
+        .x-cert:hover, .x-cert:focus-within, .x-note:hover, .x-ws-print:hover, .main .btn:hover, .x-carousel__btn:hover::before { transform: none; }
+        .x-cert:hover .x-cert__img img, .x-trail > li:hover .x-trail__dot::after { transform: none; }
+        .x-carousel__track { scroll-behavior: auto; }
+        .x-carousel__dots span { transition: none; }
+      }
+      @media print { .x-js .main .section > * { opacity: 1; transform: none; } }
+    </style>
+    <script>
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) document.documentElement.classList.add("x-js");
+    </script>
+  </head>
+  <body>
+    <div class="page" id="top">
+      <header class="nav glass" data-auto></header>
+      <main class="main">
+        <section class="x-hero" aria-label="Apresentação">
+          <div class="x-blobs" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="x-hero__copy">
+            <p class="x-hero__eyebrow">Portfólio · UX/UI Design</p>
+            <h1>
+              <span class="x-name">Nathália <em>Nishimuta</em></span>
+              <span class="x-role">— UX/UI Designer em formação</span>
+            </h1>
+            <p class="x-hero__sub">Venho da Psicologia para o design: quero criar produtos que entendem as pessoas.</p>
+            <p class="x-hero__meta">São Paulo, Brasil · 3 certificados concluídos · 5 formações em andamento · 1 estudo de caso publicado</p>
+            <aside class="x-next" aria-label="Próximo passo">
+              <p class="x-next__head">Próximo passo</p>
+              <p><strong>Vamos conversar?</strong> Estou aberta a oportunidades em UX/UI Design.</p>
+              <a class="btn x-btn-accent" href="https://www.linkedin.com/in/nathalianishimuta" target="_blank" rel="noopener">Fale comigo no LinkedIn</a>
+            </aside>
+          </div>
+          <div class="x-collage">
+            <figure class="x-cam">
+              <div class="x-cam__top" aria-hidden="true">
+                <span><b>NN</b> · DIGITAL 3.2MP</span>
+                <span class="x-cam__bits"><span class="x-cam__vf"></span><span class="x-cam__led"></span></span>
+              </div>
+              <div class="x-cam__screen">
+                <img src="foto.jpg" alt="Foto de Nathália Nishimuta" width="560" height="560" />
+                <div class="x-hud" aria-hidden="true">
+                  <span class="x-hud__rec">REC</span>
+                  <span class="x-hud__mode">AUTO</span>
+                  <span class="x-hud__batt"><span class="x-batt"><i></i><i></i><i></i></span></span>
+                  <span class="x-hud__focus"></span>
+                  <span class="x-hud__count">037/120</span>
+                  <span class="x-hud__date">13.10.2026</span>
+                </div>
+              </div>
+              <div class="x-cam__base"><span aria-hidden="true"></span><span class="x-cam__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            </figure>
+            <div class="x-logo" role="img" aria-label="Logo de Nathália: cérebro desenhado à mão com uma caneta">
+              <svg class="x-ink" viewBox="0 0 120 90" aria-hidden="true" focusable="false"><path d="M40 70 C 22 70, 14 58, 18 48 C 8 44, 10 28, 22 26 C 22 14, 36 8, 46 14 C 52 6, 68 6, 72 16 C 84 12, 96 22, 92 34 C 102 40, 98 56, 86 58 C 86 68, 72 74, 62 68 C 56 74, 46 74, 40 70 Z" /><path d="M46 14 C 44 24, 52 30, 50 40" /><path d="M22 26 C 30 30, 34 36, 32 44" /><path d="M50 40 C 56 48, 52 56, 58 62" /><path d="M72 16 C 66 26, 72 34, 66 44" /><path d="M86 58 C 80 52, 70 52, 66 56" /><path d="M76 86 L104 40" /><path d="M101 44 L110 28 C 113 22, 117 18, 116 14 C 111 14, 107 19, 104 25 L97 38" /><path d="M104 25 C 107 27, 109 28, 110 28" /></svg>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="sobre" data-nav="Sobre mim">
+          <div class="head">
+            <p class="head__eyebrow x-eyebrow"><span class="x-n">01</span> — Sobre mim</p>
+            <h2>Tecnologia, psicologia e arte, <em>juntas.</em></h2>
+          </div>
+          <div class="x-about">
+            <div class="prose">
+              <p>Estudei Psicologia na Uninove (não concluído) e hoje estou em transição de carreira para UX/UI Design e Front-end.</p>
+              <p>Quero unir tecnologia, psicologia e arte para criar produtos que entendem as pessoas. Sou mãe de duas meninas e estudo com rotina e disciplina.</p>
+            </div>
+            <aside class="x-margin" aria-label="Nota na margem">
+              <p class="x-margin__label" aria-hidden="true">Nota</p>
+              <p class="x-margin__note">psicologia + arte + tecnologia ✏️</p>
+              <svg class="x-ink x-margin__brain" viewBox="0 0 120 90" aria-hidden="true" focusable="false"><path d="M40 70 C 22 70, 14 58, 18 48 C 8 44, 10 28, 22 26 C 22 14, 36 8, 46 14 C 52 6, 68 6, 72 16 C 84 12, 96 22, 92 34 C 102 40, 98 56, 86 58 C 86 68, 72 74, 62 68 C 56 74, 46 74, 40 70 Z" /><path d="M46 14 C 44 24, 52 30, 50 40" /><path d="M22 26 C 30 30, 34 36, 32 44" /><path d="M50 40 C 56 48, 52 56, 58 62" /><path d="M72 16 C 66 26, 72 34, 66 44" /><path d="M86 58 C 80 52, 70 52, 66 56" /><path d="M76 86 L104 40" /><path d="M101 44 L110 28 C 113 22, 117 18, 116 14 C 111 14, 107 19, 104 25 L97 38" /></svg>
+            </aside>
+          </div>
+          <div class="x-origin">
+            <div>
+              <p class="x-origin__hand">Onde tudo começou</p>
+              <h3>Curso de Design — SAGA</h3>
+              <p class="x-trail__by">School of Game, Arts and Animation</p>
+              <p>Concluído em 2016 <span class="pill">2 anos</span> <span class="pill">2x por semana, 19h–21h</span></p>
+            </div>
+            <figure class="x-slot">
+              <!-- FOTO DO CERTIFICADO SAGA: troque o emoji abaixo por
+                   <img src="cert-saga.jpg" alt="Certificado do Curso de Design SAGA" /> -->
+              <div class="x-slot__photo" id="slot-cert-saga" aria-hidden="true">📷</div>
+              <figcaption>certificado físico — foto em breve 📷</figcaption>
+            </figure>
+          </div>
+          <p class="fineprint">Moro em São Paulo, Brasil.</p>
+        </section>
+
+        <section class="section" id="certificados" data-nav="Certificados">
+          <div class="head">
+            <p class="head__eyebrow x-eyebrow"><span class="x-n">02</span> — Certificados concluídos</p>
+            <h2><em>Três</em> certificados em setembro de 2026.</h2>
+            <p class="head__sub x-hand-sub">Do mais recente ao mais antigo.</p>
+          </div>
+          <ol class="x-board">
+            <li class="x-cert">
+              <a class="x-cert__img" href="https://coursera.org/verify/FS0ER9CNNMIY" target="_blank" rel="noopener"><img src="cert-calarts.jpg" alt="Certificado CalArts Visual Elements of User Interface Design" /></a>
+              <p class="x-cert__date">25/09/2026</p>
+              <h3>Visual Elements of User Interface Design</h3>
+              <p class="x-cert__by">CalArts (Coursera)</p>
+              <div class="x-cert__foot">
+                <span class="chip x-chip-done">Concluído</span>
+                <a class="link x-cert__verify" href="https://coursera.org/verify/FS0ER9CNNMIY" target="_blank" rel="noopener">Verificar</a>
+              </div>
+            </li>
+            <li class="x-cert">
+              <a class="x-cert__img" href="https://coursera.org/verify/9W7Y62YDPYSE" target="_blank" rel="noopener"><img src="cert-genai.jpg" alt="Certificado Generative AI for Everyone" /></a>
+              <p class="x-cert__date">17/09/2026</p>
+              <h3>Generative AI for Everyone</h3>
+              <p class="x-cert__by">DeepLearning.AI (Coursera), pela trilha Santander “Fundamentos de IA Generativa”</p>
+              <div class="x-cert__foot">
+                <span class="chip x-chip-done">Concluído</span>
+                <a class="link x-cert__verify" href="https://coursera.org/verify/9W7Y62YDPYSE" target="_blank" rel="noopener">Verificar</a>
+              </div>
+            </li>
+            <li class="x-cert">
+              <a class="x-cert__img" href="https://coursera.org/verify/395MQ3GVFKKS" target="_blank" rel="noopener"><img src="cert-google.jpg" alt="Certificado Google Foundations of User Experience (UX) Design" /></a>
+              <p class="x-cert__date">04/09/2026</p>
+              <h3>Foundations of User Experience (UX) Design</h3>
+              <p class="x-cert__by">Google (Coursera)</p>
+              <div class="x-cert__foot">
+                <span class="chip x-chip-done">Concluído</span>
+                <a class="link x-cert__verify" href="https://coursera.org/verify/395MQ3GVFKKS" target="_blank" rel="noopener">Verificar</a>
+              </div>
+            </li>
+          </ol>
+        </section>
+        <section class="section" id="formacao" data-nav="Em formação">
+          <div class="head">
+            <p class="head__eyebrow x-eyebrow"><span class="x-n">03</span> — Em formação</p>
+            <h2>O que estou estudando agora.</h2>
+          </div>
+          <ol class="x-trail">
+            <li>
+              <span class="x-trail__dot" aria-hidden="true"></span>
+              <div>
+                <p class="x-trail__when">Curso 2 de 8</p>
+                <p class="x-trail__title">Google UX Design Professional Certificate</p>
+                <p class="x-trail__by">Google (Coursera)</p>
+              </div>
+              <span class="chip x-chip-now">Em andamento</span>
+            </li>
+            <li>
+              <span class="x-trail__dot" aria-hidden="true"></span>
+              <div>
+                <p class="x-trail__when">Cursos 2–4</p>
+                <p class="x-trail__title">Especialização UI/UX Design</p>
+                <p class="x-trail__by">CalArts (Coursera)</p>
+              </div>
+              <span class="chip x-chip-now">Em andamento</span>
+            </li>
+            <li>
+              <span class="x-trail__dot" aria-hidden="true"></span>
+              <div>
+                <p class="x-trail__when">Out–nov/2026</p>
+                <p class="x-trail__title">Imersão Engenharia de Software</p>
+                <p class="x-trail__by">Alura</p>
+              </div>
+              <span class="chip x-chip-now">Em andamento</span>
+            </li>
+            <li>
+              <span class="x-trail__dot" aria-hidden="true"></span>
+              <div>
+                <p class="x-trail__when">Out/2026</p>
+                <p class="x-trail__title">Design Cognitivo</p>
+                <p class="x-trail__by">TheStarter</p>
+              </div>
+              <span class="chip x-chip-now">Em andamento</span>
+            </li>
+            <li>
+              <span class="x-trail__dot" aria-hidden="true"></span>
+              <div>
+                <p class="x-trail__title">Recode</p>
+                <p class="x-trail__by">Curso e mentoria</p>
+              </div>
+              <span class="chip x-chip-now">Em andamento</span>
+            </li>
+          </ol>
+        </section>
+
+        <section class="section" id="workshops" data-nav="Workshops">
+          <div class="head">
+            <p class="head__eyebrow x-eyebrow"><span class="x-n">04</span> — Workshops &amp; cursos livres</p>
+            <h2>Sete workshops e cursos curtos, <em>desde 2023.</em></h2>
+            <p class="head__sub x-hand-sub">Do mais recente ao mais antigo.</p>
+          </div>
+          <p class="x-ws-note">aprendendo sempre ✏️</p>
+          <ol class="x-trail x-trail--ws">
+            <li>
+              <span class="x-trail__dot" aria-hidden="true"></span>
+              <div>
+                <p class="x-trail__when">Out/2026</p>
+                <p class="x-trail__title">Masterclass “Seu agente funciona sozinho. Mas ele sobrevive em produção, orquestrado com outros?”</p>
+                <p class="x-trail__by">Alura + FIAP Skills &amp; Go</p>
+                <p class="x-trail__meta"><span class="pill">1h</span></p>
+              </div>
+              <figure class="x-ws-print">
+                <img src="cert-agentic.png" alt="Certificado da masterclass Alura + FIAP Skills & Go sobre orquestração de agentes" />
+              </figure>
+            </li>
+            <li>
+              <span class="x-trail__dot" aria-hidden="true"></span>
+              <div>
+                <p class="x-trail__when">28/09/2026</p>
+                <p class="x-trail__title">Imersão Agentes de IA para Negócios</p>
+                <p class="x-trail__by">Alura / Oracle Next Education (ONE)</p>
+                <p class="x-trail__meta"><span class="pill">4h</span> <span class="pill">Concluída</span></p>
+              </div>
+            </li>
+            <li>
+              <span class="x-trail__dot" aria-hidden="true"></span>
+              <div>
+                <p class="x-trail__when">22–23/08/2026</p>
+                <p class="x-trail__title">Workshop Do Figma ao App do Zero</p>
+                <p class="x-trail__by">UX Unicórnio, com Leandro Rezende (UXMC NN/g)</p>
+                <p class="x-trail__text">IA aplicada ao processo de UX: estratégia, pesquisa, priorização, conteúdo, visual e testes.</p>
+                <p class="x-trail__meta"><span class="pill">16h</span></p>
+              </div>
+              <figure class="x-ws-print">
+                <img src="cert-figma-ao-app.png" alt="Certificado do Workshop Do Figma ao App do Zero, UX Unicórnio" />
+              </figure>
+            </li>
+            <li>
+              <span class="x-trail__dot" aria-hidden="true"></span>
+              <div>
+                <p class="x-trail__when">05/12/2025</p>
+                <p class="x-trail__title">Curso UX Design: entenda a área da User Experience</p>
+                <p class="x-trail__by">Alura</p>
+                <p class="x-trail__meta"><span class="pill">8h</span> <span class="pill">Concluído</span> <a class="link x-cert__verify" href="https://cursos.alura.com.br/certificate/c4067efc-9586-47f1-aab1-985412d6cdf9" target="_blank" rel="noopener">verificar</a></p>
+              </div>
+            </li>
+            <li>
+              <span class="x-trail__dot" aria-hidden="true"></span>
+              <div>
+                <p class="x-trail__when">26–27/08/2025</p>
+                <p class="x-trail__title">Workshop Figma em 2 dias: do zero à criação do seu protótipo</p>
+                <p class="x-trail__by">EBAC, com William de Almeida</p>
+                <p class="x-trail__meta"><span class="pill">4h</span></p>
+              </div>
+              <figure class="x-ws-print">
+                <img src="cert-ebac-figma.png" alt="Certificado do workshop EBAC Figma em 2 dias" />
+              </figure>
+            </li>
+            <li>
+              <span class="x-trail__dot" aria-hidden="true"></span>
+              <div>
+                <p class="x-trail__when">20/06/2025</p>
+                <p class="x-trail__title">Algoritmos e Lógica de Programação</p>
+                <p class="x-trail__by">Workover Academy</p>
+                <p class="x-trail__meta"><span class="pill">2h</span></p>
+              </div>
+            </li>
+            <li>
+              <span class="x-trail__dot" aria-hidden="true"></span>
+              <div>
+                <p class="x-trail__when">Fev/2023</p>
+                <p class="x-trail__title">Webinar “Experiência do consumidor: o papel e alto impacto de UX/CX Design”</p>
+                <p class="x-trail__by">Mentorama, com Felipe Caroé</p>
+                <p class="x-trail__meta"><span class="pill">1h30</span></p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="section" id="habilidades" data-nav="Habilidades">
+          <div class="head">
+            <p class="head__eyebrow x-eyebrow"><span class="x-n">05</span> — Habilidades</p>
+            <h2>Entendo pessoas <em>antes</em> de desenhar telas.</h2>
+          </div>
+          <div class="x-notes">
+            <div class="x-note">
+              <svg class="x-doodle x-note__doodle" viewBox="0 0 40 36" aria-hidden="true" focusable="false"><path d="M20 32 C 8 24, 3 17, 4 11 C 5 5, 12 2, 17 6 C 19 8, 20 10, 20 10 C 20 10, 22 6, 25 4.5 C 31 2, 37 6, 36 12 C 35 19, 29 25, 20 32 Z" /></svg>
+              <h3>Pessoas</h3>
+              <ul>
+                <li>Pesquisa com usuários</li>
+                <li>Empatia e comportamento humano <small>(base em Psicologia)</small></li>
+              </ul>
+            </div>
+            <div class="x-note x-note--cream">
+              <svg class="x-doodle x-note__doodle" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M8 40 L12 28 L34 6 L42 14 L20 36 Z" /><path d="M12 28 L20 36" /><path d="M30 10 L38 18" /></svg>
+              <h3>Design</h3>
+              <ul>
+                <li>Wireframes e protótipos</li>
+                <li>UI visual: tipografia, cor, layout</li>
+                <li>Design responsivo</li>
+              </ul>
+            </div>
+            <div class="x-note x-note--blush">
+              <svg class="x-doodle x-note__doodle" viewBox="0 0 40 48" aria-hidden="true" focusable="false"><path d="M20 6 C 11 6, 6 13, 7 20 C 8 26, 13 29, 14 35 L26 35 C 27 29, 32 26, 33 20 C 34 13, 29 6, 20 6 Z" /><path d="M15 40 L25 40" /><path d="M17 44 L23 44" /><path d="M3 8 L7 11" /><path d="M37 8 L33 11" /></svg>
+              <h3>Ferramentas</h3>
+              <ul>
+                <li>Figma</li>
+                <li>IA generativa aplicada ao design</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="projetos" data-nav="Projetos">
+          <div class="head">
+            <p class="head__eyebrow x-eyebrow"><span class="x-n">06</span> — Projetos</p>
+            <h2>Um estudo de caso publicado, <em>outro a caminho.</em></h2>
+          </div>
+          <article class="x-case">
+            <div class="x-carousel" id="helo-carousel" role="region" aria-roledescription="carrossel" aria-label="Estudo de caso Heloísa Nail Designer" tabindex="0">
+              <ul class="x-carousel__track">
+                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="1 de 9"><img src="helo-slide-1.jpg" alt="Estudo de caso Heloísa — slide 1 de 9" width="1334" height="750" loading="lazy" /></li>
+                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="2 de 9"><img src="helo-slide-2.jpg" alt="Estudo de caso Heloísa — slide 2 de 9" width="1334" height="750" loading="lazy" /></li>
+                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="3 de 9"><img src="helo-slide-3.jpg" alt="Estudo de caso Heloísa — slide 3 de 9" width="1334" height="750" loading="lazy" /></li>
+                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="4 de 9"><img src="helo-slide-4.jpg" alt="Estudo de caso Heloísa — slide 4 de 9" width="1334" height="750" loading="lazy" /></li>
+                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="5 de 9"><img src="helo-slide-5.jpg" alt="Estudo de caso Heloísa — slide 5 de 9" width="1334" height="750" loading="lazy" /></li>
+                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="6 de 9"><img src="helo-slide-6.jpg" alt="Estudo de caso Heloísa — slide 6 de 9" width="1334" height="750" loading="lazy" /></li>
+                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="7 de 9"><img src="helo-slide-7.jpg" alt="Estudo de caso Heloísa — slide 7 de 9" width="1334" height="750" loading="lazy" /></li>
+                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="8 de 9"><img src="helo-slide-8.jpg" alt="Estudo de caso Heloísa — slide 8 de 9" width="1334" height="750" loading="lazy" /></li>
+                <li class="x-carousel__slide" aria-roledescription="slide" aria-label="9 de 9"><img src="helo-slide-9.jpg" alt="Estudo de caso Heloísa — slide 9 de 9" width="1334" height="750" loading="lazy" /></li>
+              </ul>
+              <p class="x-carousel__count" aria-live="polite"><span data-current>1</span>/9</p>
+              <button class="x-carousel__btn x-carousel__btn--prev" type="button" aria-label="Slide anterior" aria-disabled="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M10 3 L5 8 L10 13" /></svg></button>
+              <button class="x-carousel__btn x-carousel__btn--next" type="button" aria-label="Próximo slide" aria-disabled="false"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3 L11 8 L6 13" /></svg></button>
+              <div class="x-carousel__dots" aria-hidden="true"><span class="is-active"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="x-case__body">
+              <p class="x-case__label">Estudo de caso · publicado</p>
+              <h3>Heloísa Nail Designer — da marca ao código</h3>
+              <p>Identidade visual, pesquisa, UX e landing page de agendamento para uma nail designer de Santo André.</p>
+              <p class="x-tags">
+                <span class="pill x-tag">Marca</span> <span class="pill x-tag">UX/UI</span> <span class="pill x-tag">Front-end</span>
+              </p>
+              <a class="btn x-btn-accent" href="estudo-de-caso-heloisa.pdf" download>Baixar estudo de caso (PDF)</a>
+            </div>
+          </article>
+          <article class="x-sketch">
+            <div class="x-sketch__phone">
+              <svg class="x-ink" viewBox="0 0 140 260" aria-hidden="true" focusable="false">
+                <path d="M22 8 C 60 5, 95 6, 120 9 C 131 10, 134 18, 133 30 C 132 100, 134 180, 132 236 C 131 248, 124 252, 112 252 C 80 254, 50 253, 24 251 C 12 250, 7 243, 8 230 C 9 160, 6 90, 8 26 C 8 14, 13 9, 22 8 Z" />
+                <path d="M58 20 L82 20" />
+                <path class="x-dash" d="M22 36 L118 36 L118 60 L22 60 Z" />
+                <path d="M22 76 L100 76" /><path d="M22 88 L82 88" />
+                <path class="x-dash" d="M22 104 L66 104 L66 146 L22 146 Z" /><path class="x-dash" d="M74 104 L118 104 L118 146 L74 146 Z" />
+                <path d="M24 164 L30 170 L38 160" /><path d="M46 165 L112 165" />
+                <path d="M24 184 L30 190 L38 180" /><path d="M46 185 L98 185" />
+                <path d="M22 212 C 50 210, 90 211, 118 212 L118 232 C 90 233, 50 232, 22 232 Z" />
+              </svg>
+              <span class="x-stamp">Em breve</span>
+            </div>
+            <div>
+              <h3>Estudo de caso 1 — App de rotina familiar</h3>
+              <p>Um aplicativo para mães organizarem estudos, trabalho e a rotina dos filhos.</p>
+              <p class="x-tags">
+                <span class="pill x-tag">Pesquisa</span> <span class="pill x-tag">Personas</span>
+                <span class="pill x-tag">Wireframes</span> <span class="pill x-tag">Protótipo no Figma</span>
+              </p>
+            </div>
+          </article>
+          <p class="fineprint">Mais estudos de caso chegando em breve.</p>
+        </section>
+
+        <section class="section" id="contato" data-nav="Contato">
+          <div class="x-torn-wrap">
+            <div class="x-torn">
+              <svg class="x-doodle x-torn__heart" viewBox="0 0 40 36" aria-hidden="true" focusable="false"><path d="M20 32 C 8 24, 3 17, 4 11 C 5 5, 12 2, 17 6 C 19 8, 20 10, 20 10 C 20 10, 22 6, 25 4.5 C 31 2, 37 6, 36 12 C 35 19, 29 25, 20 32 Z" /></svg>
+              <p class="x-torn__hand" aria-hidden="true">vamos conversar?</p>
+              <div class="head">
+                <p class="head__eyebrow x-eyebrow"><span class="x-n">07</span> — Contato</p>
+                <h2>Vou adorar conversar com você.</h2>
+                <p class="head__sub">Me chame no LinkedIn ou escreva para nishimutanathalia@gmail.com.</p>
+              </div>
+              <div class="links">
+                <a class="btn x-btn-accent" href="https://www.linkedin.com/in/nathalianishimuta" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="btn" href="mailto:nishimutanathalia@gmail.com">nishimutanathalia@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="foot">
+        <p>Nathália Nishimuta · UX/UI Designer em formação · São Paulo, Brasil</p>
+        <nav aria-label="Voltar às seções" data-auto></nav>
+        <a class="badge" href="https://hark.com/" target="_blank" rel="noopener"
+          ><span class="hark-mark"></span><span>built by hark</span></a
+        >
+      </footer>
+    </div>
+    <script src="hark.js"></script>
+    <script>
+      (function () {
+        const root = document.getElementById("helo-carousel");
+        if (!root) return;
+        const track = root.querySelector(".x-carousel__track");
+        const slides = track.children;
+        const dots = root.querySelectorAll(".x-carousel__dots span");
+        const current = root.querySelector("[data-current]");
+        const prev = root.querySelector(".x-carousel__btn--prev");
+        const next = root.querySelector(".x-carousel__btn--next");
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let index = 0;
+        function update(i) {
+          if (i === index && current.textContent === String(i + 1)) return;
+          index = i;
+          current.textContent = i + 1;
+          dots.forEach((d, n) => d.classList.toggle("is-active", n === i));
+          prev.setAttribute("aria-disabled", String(i === 0));
+          next.setAttribute("aria-disabled", String(i === slides.length - 1));
+        }
+        function go(i) {
+          i = Math.max(0, Math.min(slides.length - 1, i));
+          track.scrollTo({ left: i * track.clientWidth, behavior: reduce.matches ? "auto" : "smooth" });
+          update(i);
+        }
+        let raf = 0;
+        track.addEventListener("scroll", () => {
+          cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(() => update(Math.round(track.scrollLeft / track.clientWidth)));
+        }, { passive: true });
+        let bumpTimer = 0;
+        function bump(cls) {
+          root.classList.remove("x-bump-start", "x-bump-end");
+          void root.offsetWidth;
+          root.classList.add(cls);
+          clearTimeout(bumpTimer);
+          bumpTimer = setTimeout(() => root.classList.remove(cls), 320);
+        }
+        prev.addEventListener("click", () => { if (prev.getAttribute("aria-disabled") === "true") bump("x-bump-start"); else go(index - 1); });
+        next.addEventListener("click", () => { if (next.getAttribute("aria-disabled") === "true") bump("x-bump-end"); else go(index + 1); });
+        root.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") { e.preventDefault(); go(index - 1); }
+          else if (e.key === "ArrowRight") { e.preventDefault(); go(index + 1); }
+          else if (e.key === "Home") { e.preventDefault(); go(0); }
+          else if (e.key === "End") { e.preventDefault(); go(slides.length - 1); }
+        });
+        window.addEventListener("resize", () => { track.scrollLeft = index * track.clientWidth; });
+      })();
+      (function () {
+        if (!document.documentElement.classList.contains("x-js")) return;
+        const items = document.querySelectorAll(".main .section > *");
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
+        }, { rootMargin: "0px 0px -6% 0px" });
+        items.forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>
