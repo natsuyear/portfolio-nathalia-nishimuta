@@ -2,9 +2,6 @@
 
 Site pessoal de portfólio: "Designer de produto: da marca ao código".
 
-## Como abrir
-Abra `index.html` no navegador. Todos os arquivos ficam na mesma pasta (sem subpastas), então para publicar no GitHub Pages basta subir tudo na raiz do repositório e ativar Settings → Pages → Deploy from branch → main → root.
-
 ## Conteúdo
 - `index.html`: a página (Sobre, Certificados, Formação, Workshops, Habilidades, Projetos com os cases Regina Decorações & Celevia by Regina e Heloísa Nail Designer, Contato)
 - Os botões "Abrir estudo de caso (PDF)" abrem os PDFs em nova aba, pelo endereço completo do GitHub Pages.
