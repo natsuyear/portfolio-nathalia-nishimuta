@@ -211,6 +211,7 @@
         padding: 12px 14px 10px;
         border-radius: 28px 28px 22px 22px;
         background: linear-gradient(155deg, #4a433b 0%, #2a2520 38%, #1c1915 70%, #302a24 100%);
+        background-color: #2a2520;
         box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.14), inset 0 -2px 0 rgb(0 0 0 / 0.45), 0 0 0 1px rgb(235 171 160 / 0.45), var(--x-lift), 0 40px 80px -40px rgb(240 56 107 / 0.45);
         rotate: -2deg;
         color: #e9dfcd;
@@ -327,7 +328,7 @@
       .x-cert__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--x-line-soft); }
       .main .x-cert__verify { display: inline-flex; align-items: center; min-height: var(--tap); margin: 0; font: var(--type-label); }
 
-      /* 03 Em formação and 04 Workshops: a gold timeline */
+      /* 03 Em formação: a gold timeline */
       .x-trail { position: relative; display: grid; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--x-line-soft); }
       .x-trail::before { content: ""; position: absolute; left: 7.5px; top: 34px; bottom: 34px; width: 1px; background: linear-gradient(var(--x-terra), var(--x-line-soft)); }
       .x-trail > li { position: relative; display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; gap: 6px 24px; align-items: start; padding: 22px 0; border-bottom: 1px solid var(--x-line-soft); }
@@ -338,13 +339,6 @@
       .x-trail__title { font: 600 clamp(19px, 2vw, 22px)/1.2 var(--x-serif); letter-spacing: -0.01em; }
       .x-trail__by { margin-top: 4px; font: var(--type-small); color: var(--x-ink-2); }
       .x-trail > li > .chip { margin-top: 2px; }
-      .x-ws-note { display: flex; justify-content: flex-end; margin: -8px 0 12px; font: 600 22px/1.1 var(--x-serif); color: var(--x-pink-text); }
-      .x-trail--ws > li { grid-template-columns: 16px minmax(0, 1fr) minmax(0, 200px); gap: 8px 32px; }
-      .x-trail__text { margin-top: 8px; max-width: 60ch; }
-      .x-trail__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 10px; }
-      .x-ws-print { margin: 0; padding: 6px; background: var(--x-card); border: 1px solid var(--x-line); border-radius: var(--r-s); transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out); }
-      .x-ws-print:hover { transform: translateY(-3px); box-shadow: var(--x-glow); }
-      .x-ws-print img { display: block; width: 100%; height: auto; object-fit: contain; border-radius: 8px; background: #fff; }
 
       /* 05 Habilidades */
       .x-notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: clamp(18px, 2.4vw, 28px); counter-reset: x-note; }
@@ -592,6 +586,13 @@
       .x-sketch p + p { margin-top: 12px; }
       .x-sketch .x-tags { margin-top: 18px; }
 
+      /* Fluxo do usuário: the flow image in a card */
+      .x-flow { margin: 0; padding: 14px; background: var(--x-card); border: 1px solid var(--x-line); border-radius: var(--r-m); }
+      .x-flow a { display: block; overflow: hidden; border-radius: 10px; border: 1px solid var(--x-line-soft); }
+      .x-flow img { display: block; width: 100%; height: auto; }
+      .x-flow__img { cursor: zoom-in; border-radius: 10px; border: 1px solid var(--x-line-soft); }
+      .x-flow .fineprint { margin-top: 8px; text-align: center; }
+
       /* 07 Contato: the one charcoal band */
       .x-torn-wrap {
         --x-ink: #f4ecdd;
@@ -656,10 +657,8 @@
         .x-sketch { grid-template-columns: minmax(0, 1fr); }
         .x-sketch__phone { justify-self: center; }
         .x-stamp { right: -18px; }
-        .x-trail > li, .x-trail--ws > li { grid-template-columns: 16px minmax(0, 1fr); gap: 6px 18px; }
+        .x-trail > li { grid-template-columns: 16px minmax(0, 1fr); gap: 6px 18px; }
         .x-trail > li > .chip { grid-column: 2; justify-self: start; margin-top: 6px; }
-        .x-ws-print { grid-column: 2; justify-self: start; width: min(100%, 240px); margin-top: 6px; }
-        .x-ws-note { justify-content: flex-start; margin-top: 0; }
         .x-cam { rotate: -1deg; padding: 10px 10px 8px; border-radius: 22px 22px 18px 18px; }
         .x-hud__mode { display: none; }
         .x-hud__date { font-size: 14px; }
@@ -667,8 +666,8 @@
         .x-torn__heart { width: 30px; }
       }
       @media (prefers-reduced-motion: reduce) {
-        .x-cert, .x-note, .x-ws-print, .main .btn, .main .link, .nav .seg a, .x-cert__img img, .x-trail__dot::after, .x-carousel__btn::before { transition: none; }
-        .x-cert:hover, .x-cert:focus-within, .x-note:hover, .x-ws-print:hover, .main .btn:hover, .x-carousel__btn:hover::before { transform: none; }
+        .x-cert, .x-note, .main .btn, .main .link, .nav .seg a, .x-cert__img img, .x-trail__dot::after, .x-carousel__btn::before { transition: none; }
+        .x-cert:hover, .x-cert:focus-within, .x-note:hover, .main .btn:hover, .x-carousel__btn:hover::before { transform: none; }
         .x-cert:hover .x-cert__img img, .x-trail > li:hover .x-trail__dot::after { transform: none; }
         .x-carousel__track { scroll-behavior: auto; }
         .x-carousel__dots span { transition: none; }
@@ -692,7 +691,7 @@
               <span class="x-role">— UX/UI Designer em formação</span>
             </h1>
             <p class="x-hero__sub">Venho da Psicologia para o design: quero criar produtos que entendem as pessoas.</p>
-            <p class="x-hero__meta">São Paulo, Brasil · 3 certificados concluídos · 5 formações em andamento · 2 estudos de caso publicados</p>
+            <p class="x-hero__meta">São Paulo, Brasil · 3 certificados concluídos · 3 formações em andamento · 3 projetos publicados</p>
             <aside class="x-next" aria-label="Próximo passo">
               <p class="x-next__head">Próximo passo</p>
               <p><strong>Vamos conversar?</strong> Estou aberta a oportunidades em UX/UI Design.</p>
@@ -761,10 +760,20 @@
         <section class="section" id="certificados" data-nav="Certificados">
           <div class="head">
             <p class="head__eyebrow x-eyebrow"><span class="x-n">02</span> — Certificados concluídos</p>
-            <h2><em>Três</em> certificados em setembro de 2026.</h2>
+            <h2><em>Três</em> certificados concluídos em 2026.</h2>
             <p class="head__sub x-hand-sub">Do mais recente ao mais antigo.</p>
           </div>
           <ol class="x-board">
+            <li class="x-cert">
+              <a class="x-cert__img" href="https://credentials.somostera.com/bb6c891ed7e27e9386516621d4a99455" target="_blank" rel="noopener"><img src="cert-tera-claude.jpg" alt="Certificado Tera Claude para Builders" /></a>
+              <p class="x-cert__date">03/11/2026</p>
+              <h3>Claude para Builders</h3>
+              <p class="x-cert__by">Tera · 5h, com testes e desafios práticos</p>
+              <div class="x-cert__foot">
+                <span class="chip x-chip-done">Concluído</span>
+                <a class="link x-cert__verify" href="https://credentials.somostera.com/bb6c891ed7e27e9386516621d4a99455" target="_blank" rel="noopener">Verificar</a>
+              </div>
+            </li>
             <li class="x-cert">
               <a class="x-cert__img" href="https://coursera.org/verify/FS0ER9CNNMIY" target="_blank" rel="noopener"><img src="cert-calarts.jpg" alt="Certificado CalArts Visual Elements of User Interface Design" /></a>
               <p class="x-cert__date">25/09/2026</p>
@@ -773,16 +782,6 @@
               <div class="x-cert__foot">
                 <span class="chip x-chip-done">Concluído</span>
                 <a class="link x-cert__verify" href="https://coursera.org/verify/FS0ER9CNNMIY" target="_blank" rel="noopener">Verificar</a>
-              </div>
-            </li>
-            <li class="x-cert">
-              <a class="x-cert__img" href="https://coursera.org/verify/9W7Y62YDPYSE" target="_blank" rel="noopener"><img src="cert-genai.jpg" alt="Certificado Generative AI for Everyone" /></a>
-              <p class="x-cert__date">17/09/2026</p>
-              <h3>Generative AI for Everyone</h3>
-              <p class="x-cert__by">DeepLearning.AI (Coursera), pela trilha Santander “Fundamentos de IA Generativa”</p>
-              <div class="x-cert__foot">
-                <span class="chip x-chip-done">Concluído</span>
-                <a class="link x-cert__verify" href="https://coursera.org/verify/9W7Y62YDPYSE" target="_blank" rel="noopener">Verificar</a>
               </div>
             </li>
             <li class="x-cert">
@@ -824,24 +823,6 @@
             <li>
               <span class="x-trail__dot" aria-hidden="true"></span>
               <div>
-                <p class="x-trail__when">Out–nov/2026</p>
-                <p class="x-trail__title">Imersão Engenharia de Software</p>
-                <p class="x-trail__by">Alura</p>
-              </div>
-              <span class="chip x-chip-now">Em andamento</span>
-            </li>
-            <li>
-              <span class="x-trail__dot" aria-hidden="true"></span>
-              <div>
-                <p class="x-trail__when">Out/2026</p>
-                <p class="x-trail__title">Design Cognitivo</p>
-                <p class="x-trail__by">TheStarter</p>
-              </div>
-              <span class="chip x-chip-now">Em andamento</span>
-            </li>
-            <li>
-              <span class="x-trail__dot" aria-hidden="true"></span>
-              <div>
                 <p class="x-trail__title">Recode</p>
                 <p class="x-trail__by">Curso e mentoria</p>
               </div>
@@ -850,93 +831,9 @@
           </ol>
         </section>
 
-        <section class="section" id="workshops" data-nav="Workshops">
-          <div class="head">
-            <p class="head__eyebrow x-eyebrow"><span class="x-n">04</span> — Workshops &amp; cursos livres</p>
-            <h2>Sete workshops e cursos curtos, <em>desde 2023.</em></h2>
-            <p class="head__sub x-hand-sub">Do mais recente ao mais antigo.</p>
-          </div>
-          <p class="x-ws-note">aprendendo sempre ✏️</p>
-          <ol class="x-trail x-trail--ws">
-            <li>
-              <span class="x-trail__dot" aria-hidden="true"></span>
-              <div>
-                <p class="x-trail__when">Out/2026</p>
-                <p class="x-trail__title">Masterclass “Seu agente funciona sozinho. Mas ele sobrevive em produção, orquestrado com outros?”</p>
-                <p class="x-trail__by">Alura + FIAP Skills &amp; Go</p>
-                <p class="x-trail__meta"><span class="pill">1h</span></p>
-              </div>
-              <figure class="x-ws-print">
-                <img src="cert-agentic.png" alt="Certificado da masterclass Alura + FIAP Skills & Go sobre orquestração de agentes" />
-              </figure>
-            </li>
-            <li>
-              <span class="x-trail__dot" aria-hidden="true"></span>
-              <div>
-                <p class="x-trail__when">28/09/2026</p>
-                <p class="x-trail__title">Imersão Agentes de IA para Negócios</p>
-                <p class="x-trail__by">Alura / Oracle Next Education (ONE)</p>
-                <p class="x-trail__meta"><span class="pill">4h</span> <span class="pill">Concluída</span></p>
-              </div>
-            </li>
-            <li>
-              <span class="x-trail__dot" aria-hidden="true"></span>
-              <div>
-                <p class="x-trail__when">22–23/08/2026</p>
-                <p class="x-trail__title">Workshop Do Figma ao App do Zero</p>
-                <p class="x-trail__by">UX Unicórnio, com Leandro Rezende (UXMC NN/g)</p>
-                <p class="x-trail__text">IA aplicada ao processo de UX: estratégia, pesquisa, priorização, conteúdo, visual e testes.</p>
-                <p class="x-trail__meta"><span class="pill">16h</span></p>
-              </div>
-              <figure class="x-ws-print">
-                <img src="cert-figma-ao-app.png" alt="Certificado do Workshop Do Figma ao App do Zero, UX Unicórnio" />
-              </figure>
-            </li>
-            <li>
-              <span class="x-trail__dot" aria-hidden="true"></span>
-              <div>
-                <p class="x-trail__when">05/12/2025</p>
-                <p class="x-trail__title">Curso UX Design: entenda a área da User Experience</p>
-                <p class="x-trail__by">Alura</p>
-                <p class="x-trail__meta"><span class="pill">8h</span> <span class="pill">Concluído</span> <a class="link x-cert__verify" href="https://cursos.alura.com.br/certificate/c4067efc-9586-47f1-aab1-985412d6cdf9" target="_blank" rel="noopener">verificar</a></p>
-              </div>
-            </li>
-            <li>
-              <span class="x-trail__dot" aria-hidden="true"></span>
-              <div>
-                <p class="x-trail__when">26–27/08/2025</p>
-                <p class="x-trail__title">Workshop Figma em 2 dias: do zero à criação do seu protótipo</p>
-                <p class="x-trail__by">EBAC, com William de Almeida</p>
-                <p class="x-trail__meta"><span class="pill">4h</span></p>
-              </div>
-              <figure class="x-ws-print">
-                <img src="cert-ebac-figma.png" alt="Certificado do workshop EBAC Figma em 2 dias" />
-              </figure>
-            </li>
-            <li>
-              <span class="x-trail__dot" aria-hidden="true"></span>
-              <div>
-                <p class="x-trail__when">20/06/2025</p>
-                <p class="x-trail__title">Algoritmos e Lógica de Programação</p>
-                <p class="x-trail__by">Workover Academy</p>
-                <p class="x-trail__meta"><span class="pill">2h</span></p>
-              </div>
-            </li>
-            <li>
-              <span class="x-trail__dot" aria-hidden="true"></span>
-              <div>
-                <p class="x-trail__when">Fev/2023</p>
-                <p class="x-trail__title">Webinar “Experiência do consumidor: o papel e alto impacto de UX/CX Design”</p>
-                <p class="x-trail__by">Mentorama, com Felipe Caroé</p>
-                <p class="x-trail__meta"><span class="pill">1h30</span></p>
-              </div>
-            </li>
-          </ol>
-        </section>
-
         <section class="section" id="habilidades" data-nav="Habilidades">
           <div class="head">
-            <p class="head__eyebrow x-eyebrow"><span class="x-n">05</span> — Habilidades</p>
+            <p class="head__eyebrow x-eyebrow"><span class="x-n">04</span> — Habilidades</p>
             <h2>Entendo pessoas <em>antes</em> de desenhar telas.</h2>
           </div>
           <div class="x-notes">
@@ -946,12 +843,14 @@
               <ul>
                 <li>Pesquisa com usuários</li>
                 <li>Empatia e comportamento humano <small>(base em Psicologia)</small></li>
+                <li>Design cognitivo</li>
               </ul>
             </div>
             <div class="x-note x-note--cream">
               <svg class="x-doodle x-note__doodle" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M8 40 L12 28 L34 6 L42 14 L20 36 Z" /><path d="M12 28 L20 36" /><path d="M30 10 L38 18" /></svg>
               <h3>Design</h3>
               <ul>
+                <li>Design centrado no usuário</li>
                 <li>Wireframes e protótipos</li>
                 <li>UI visual: tipografia, cor, layout</li>
                 <li>Design responsivo</li>
@@ -962,6 +861,9 @@
               <h3>Ferramentas</h3>
               <ul>
                 <li>Figma</li>
+                <li>Canva</li>
+                <li>Photoshop e Illustrator</li>
+                <li>HTML, CSS e JavaScript</li>
                 <li>IA generativa aplicada ao design</li>
               </ul>
             </div>
@@ -970,8 +872,8 @@
 
         <section class="section" id="projetos" data-nav="Projetos">
           <div class="head">
-            <p class="head__eyebrow x-eyebrow"><span class="x-n">06</span> — Projetos</p>
-            <h2>Dois estudos de caso <em>publicados.</em></h2>
+            <p class="head__eyebrow x-eyebrow"><span class="x-n">05</span> — Projetos</p>
+            <h2>Três projetos <em>publicados.</em></h2>
           </div>
           <article class="x-main" aria-labelledby="case-regina">
             <header class="x-main__head">
@@ -1045,7 +947,7 @@
                 <p class="x-case__label"><span class="x-n">b</span> · Front-end</p>
                 <h4>Site</h4>
                 <p>Site da Regina Decorações com a aba Celevia by Regina: portfólio por tipo de festa, orçamento guiado pelo WhatsApp, contrato prévio exibido para dar credibilidade e aluguel de kits com datas, caução e checkout.</p>
-                <p class="x-site__cta"><a class="btn x-btn-accent" href="#">Ver site</a> <span class="fineprint">link publicado em breve</span></p>
+                <p class="x-site__cta"><a class="btn x-btn-accent" href="https://natsuyear.github.io/Regina-decoracoes-celevia/" target="_blank" rel="noopener">Ver site</a></p>
               </div>
             </div>
           </article>
@@ -1061,7 +963,10 @@
             <div class="x-part">
               <div class="x-part__head">
                 <div></div>
-                <a class="btn x-btn-accent" href="https://natsuyear.github.io/portfolio-nathalia-nishimuta/estudo-de-caso-heloisa.pdf" target="_blank" rel="noopener">Abrir estudo de caso (PDF)</a>
+                <div class="links">
+                  <a class="btn x-btn-accent" href="https://natsuyear.github.io/heloisa-nail-designer/" target="_blank" rel="noopener">Ver site</a>
+                  <a class="btn x-btn-accent" href="https://natsuyear.github.io/portfolio-nathalia-nishimuta/estudo-de-caso-heloisa.pdf" target="_blank" rel="noopener">Abrir estudo de caso (PDF)</a>
+                </div>
               </div>
               <div class="x-carousel" role="region" aria-roledescription="carrossel" aria-label="Estudo de caso Heloísa Nail Designer" tabindex="0">
                 <ul class="x-carousel__track">
@@ -1083,6 +988,65 @@
               </div>
             </div>
           </article>
+          <article class="x-main" aria-labelledby="case-cardiovita">
+            <header class="x-main__head">
+              <div>
+                <p class="x-case__label">Meu primeiro projeto de UX · Curso Google UX Design · 12 slides</p>
+                <h3 id="case-cardiovita">CardioVita</h3>
+                <p class="x-main__sub">Porque cada batida importa.</p>
+              </div>
+              <div class="x-main__intro prose">
+                <p>Foi o primeiro app que desenhei, idealizado em 2025 no curso de UX Design do Google (Coursera): um monitor cardíaco digital para quem precisa de cuidado extra. Acompanha batimentos e sinais vitais, avisa com calma quando algo muda, mostra relatórios fáceis de ler e dá dicas simples. Em 2026 transformei o briefing, o moodboard e os componentes em um protótipo funcional com IA no Lovable. A filosofia do projeto: cuidar sem assustar.</p>
+              </div>
+              <p class="x-tags">
+                <span class="pill x-tag">Briefing</span> <span class="pill x-tag">Moodboard</span> <span class="pill x-tag">Componentes de UI</span> <span class="pill x-tag">Acessibilidade</span> <span class="pill x-tag">Protótipo com IA</span> <span class="pill x-tag">Lovable</span>
+              </p>
+            </header>
+
+            <div class="x-part">
+              <div class="x-part__head">
+                <div></div>
+                <div class="links">
+                  <a class="btn x-btn-accent" href="https://heartwise-vital-companion.lovable.app" target="_blank" rel="noopener">Ver protótipo</a>
+                  <a class="btn x-btn-accent" href="https://natsuyear.github.io/portfolio-nathalia-nishimuta/estudo-de-caso-cardiovita.pdf" target="_blank" rel="noopener">Abrir estudo de caso (PDF)</a>
+                </div>
+              </div>
+              <div class="x-carousel" role="region" aria-roledescription="carrossel" aria-label="Estudo de caso CardioVita" tabindex="0">
+                <ul class="x-carousel__track">
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="1 de 12"><img src="cardio-slide-1.jpg" alt="Estudo de caso CardioVita, slide 1 de 12" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="2 de 12"><img src="cardio-slide-2.jpg" alt="Estudo de caso CardioVita, slide 2 de 12" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="3 de 12"><img src="cardio-slide-3.jpg" alt="Estudo de caso CardioVita, slide 3 de 12" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="4 de 12"><img src="cardio-slide-4.jpg" alt="Estudo de caso CardioVita, slide 4 de 12" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="5 de 12"><img src="cardio-slide-5.jpg" alt="Estudo de caso CardioVita, slide 5 de 12" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="6 de 12"><img src="cardio-slide-6.jpg" alt="Estudo de caso CardioVita, slide 6 de 12" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="7 de 12"><img src="cardio-slide-7.jpg" alt="Estudo de caso CardioVita, slide 7 de 12" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="8 de 12"><img src="cardio-slide-8.jpg" alt="Estudo de caso CardioVita, slide 8 de 12" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="9 de 12"><img src="cardio-slide-9.jpg" alt="Estudo de caso CardioVita, slide 9 de 12" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="10 de 12"><img src="cardio-slide-10.jpg" alt="Estudo de caso CardioVita, slide 10 de 12" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="11 de 12"><img src="cardio-slide-11.jpg" alt="Estudo de caso CardioVita, slide 11 de 12" width="1280" height="720" loading="lazy" /></li>
+                  <li class="x-carousel__slide" aria-roledescription="slide" aria-label="12 de 12"><img src="cardio-slide-12.jpg" alt="Estudo de caso CardioVita, slide 12 de 12" width="1280" height="720" loading="lazy" /></li>
+                </ul>
+                <p class="x-carousel__count" aria-live="polite"><span data-current>1</span>/12</p>
+                <p class="x-carousel__hint" aria-hidden="true"><svg viewBox="0 0 12 12"><circle cx="5" cy="5" r="3.6" /><path d="M7.7 7.7 L11 11 M5 3.4 V6.6 M3.4 5 H6.6" /></svg>toque para ampliar</p>
+                <button class="x-carousel__btn x-carousel__btn--prev" type="button" aria-label="Slide anterior" aria-disabled="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M10 3 L5 8 L10 13" /></svg></button>
+                <button class="x-carousel__btn x-carousel__btn--next" type="button" aria-label="Próximo slide" aria-disabled="false"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3 L11 8 L6 13" /></svg></button>
+                <div class="x-carousel__dots" aria-hidden="true"><span class="is-active"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- 06 Fluxo do usuário: imagem do fluxo (fluxo-portfolio.png). Para trocar, substitua o arquivo com o mesmo nome. -->
+        <section class="section" id="fluxo" data-nav="Fluxo">
+          <div class="head">
+            <p class="head__eyebrow x-eyebrow"><span class="x-n">06</span> — Fluxo do usuário</p>
+            <h2>Como pensei a <em>navegação.</em></h2>
+            <p class="head__sub">Mapeei o caminho de quem visita o portfólio: entra pelo topo, conhece minha história, confere certificados e projetos e termina no contato. O menu fixo deixa pular direto para qualquer seção, e cada projeto abre slides, site e PDF.</p>
+          </div>
+          <figure class="x-flow">
+            <img class="x-flow__img" src="fluxo-portfolio.png" alt="Fluxo do usuário do portfólio: do topo ao contato, com os desvios para certificados e projetos" width="1920" height="1000" loading="lazy" role="button" tabindex="0" />
+            <figcaption class="fineprint">toque para ampliar</figcaption>
+          </figure>
         </section>
 
         <section class="section" id="contato" data-nav="Contato">
@@ -1140,7 +1104,7 @@
         }
         function open(root, i) {
           track = root.querySelector(".x-carousel__track");
-          set = Array.from(track.querySelectorAll("img"));
+          set = track ? Array.from(track.querySelectorAll("img")) : [root];
           total.textContent = set.length;
           opener = document.activeElement;
           lb.setAttribute("aria-label", (root.getAttribute("aria-label") || "Slide") + ", ampliado");
@@ -1172,6 +1136,11 @@
             buttons[(i + (e.shiftKey ? buttons.length - 1 : 1)) % buttons.length].focus();
           }
         });
+        const flow = document.querySelector(".x-flow__img");
+        if (flow) {
+          flow.addEventListener("click", () => open(flow, 0));
+          flow.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); open(flow, 0); } });
+        }
         let touch = null;
         lb.addEventListener("touchstart", (e) => { if (e.touches.length === 1) touch = { x: e.touches[0].clientX, y: e.touches[0].clientY }; }, { passive: true });
         lb.addEventListener("touchend", (e) => {
