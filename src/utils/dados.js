@@ -134,6 +134,11 @@ export const carrosseis = {
     imagens: criarSlides("cardio-slide-", 12, ".jpg", false),
     indicador: "bolinhas",
   },
+  medlembra: {
+    nome: "Mapa de interação e wireframe MedLembra",
+    imagens: criarSlides("medlembra-", 8, png, false),
+    indicador: "barra",
+  },
 };
 
 // Tags de cada projeto
@@ -154,6 +159,10 @@ export const linksProjetos = {
   cardiovita: [
     { texto: "Ver protótipo", link: "https://heartwise-vital-companion.lovable.app" },
     { texto: "Abrir estudo de caso (PDF)", link: "https://natsuyear.github.io/portfolio-nathalia-nishimuta/estudo-de-caso-cardiovita.pdf" },
+  ],
+  medlembra: [
+    { texto: "Ver protótipo", link: "https://natsuyear.github.io/portfolio-nathalia-nishimuta/medlembra_prototipo"}
+    { texto: "Abrir mapa e wireframe (PDF)"} link: "https://natsuyear.github.io/portfolio-nathalia-nishimuta/MedLembra.pdf"},
   ],
   srhub: [
     { texto: "Ver código no GitHub", link: "https://github.com/natsuyear/sr-hub-api-recode" },
