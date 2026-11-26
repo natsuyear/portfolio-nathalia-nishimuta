@@ -28,10 +28,10 @@ export const certificados = [
   },
   {
     data: "26/11/2026",
-    titulo: "UI/UX Design",
+    titulo: "UI/UX Design Specialization",
     por: "CalArts (Coursera)",
     link: "https://www.coursera.org/account/accomplishments/specialization/1E1YDIV81GA9",
-    imagem: "coursera.uxcalarts.png",
+    imagem: "coursera-uxcalarts.png",
     alt: "Certificado CalArts UI/UX Design",
   },
   {
