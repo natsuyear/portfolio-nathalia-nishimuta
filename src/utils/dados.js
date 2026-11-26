@@ -27,12 +27,12 @@ export const certificados = [
     alt: "Certificado Tera Claude para Builders",
   },
   {
-    data: "25/09/2026",
-    titulo: "Visual Elements of User Interface Design",
+    data: "26/11/2026",
+    titulo: "UI/UX Design",
     por: "CalArts (Coursera)",
-    link: "https://coursera.org/verify/FS0ER9CNNMIY",
-    imagem: "cert-calarts.jpg",
-    alt: "Certificado CalArts Visual Elements of User Interface Design",
+    link: "https://www.coursera.org/account/accomplishments/specialization/1E1YDIV81GA9",
+    imagem: "coursera.uxcalarts.pdf",
+    alt: "Certificado CalArts UI/UX Design",
   },
   {
     data: "22 e 23/08/2026",
