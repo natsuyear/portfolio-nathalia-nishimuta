@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MedLembra · Protótipo clicável</title>
+<style>
+:root{
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  --pg:#FFF1F6; --pg-text:#6B1240; --panel:#FFFBFD; --panel-line:#E79BBF; --muted:#C2377B;
+  --y1:#FFD93D; --y2:#FFF0A8; --pink:#FF7FB0; --p1:#C2377B; --p2:#B02A6B; --p3:#6B1240; --tan:#F8C8DC; --card:#FFFBFD; --cream:#FFF1F6;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --pg:#1f0f17; --pg-text:#FFE4EF; --panel:#2b1520; --panel-line:#6a2f4a; --muted:#ff9cc4; }
+}
+:root[data-theme="dark"]{ --pg:#1f0f17; --pg-text:#FFE4EF; --panel:#2b1520; --panel-line:#6a2f4a; --muted:#ff9cc4; }
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--pg);color:var(--pg-text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.4}
+.stage{max-width:960px;margin:0 auto;padding:20px 16px 32px;display:grid;gap:24px;grid-template-columns:1fr;justify-items:center}
+@media (min-width:900px){.stage{grid-template-columns:auto 1fr;align-items:start;justify-items:stretch}}
+.phone{width:min(360px,100%);height:720px;border:3px solid var(--p3);border-radius:38px;background:var(--card);display:flex;flex-direction:column;overflow:hidden;position:relative;color:var(--p3);box-shadow:0 10px 30px rgba(107,18,64,.18);justify-self:center}
+.status{height:34px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:6px 24px 0;font-size:12px;font-weight:700;position:relative}
+.status::before{content:"";position:absolute;left:50%;top:9px;width:84px;height:18px;margin-left:-42px;background:var(--p3);border-radius:10px}
+.batt{width:24px;height:12px;border:1.5px solid var(--p3);border-radius:3px;position:relative}
+.batt::after{content:"";position:absolute;inset:2px 6px 2px 2px;background:var(--p3);border-radius:1px}
+.screen{flex:1;min-height:0;display:flex;flex-direction:column;position:relative}
+.appbar{margin:4px 12px 0;height:48px;flex:none;background:var(--p2);border-radius:16px;display:flex;align-items:center;justify-content:center;position:relative;color:var(--cream)}
+.appbar h1{margin:0;font-size:15px;font-weight:700}
+.appbar .icon{position:absolute;left:6px;top:4px;width:40px;height:40px;background:none;border:0;color:var(--cream);cursor:pointer;border-radius:12px;display:grid;place-items:center}
+.content{flex:1;overflow:auto;padding:14px 18px 16px}
+button{font:inherit;color:inherit}
+button:focus-visible,input:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.label{font-size:12px;font-weight:700;color:var(--p2);margin:12px 0 6px;display:block}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.logo{width:54px;height:54px;border-radius:15px;background:var(--y1);border:2px solid var(--p3);display:grid;place-items:center;flex:none}
+.brand b{display:block;font-size:22px;line-height:1.1}
+.brand span{font-size:12px;color:var(--p1);font-style:italic}
+.next{background:var(--y2);border:2px solid var(--p2);border-radius:18px;padding:14px 16px;position:relative;min-height:112px}
+.next small{font-size:12px;font-weight:700;color:var(--p2)}
+.next .t{font-size:36px;font-weight:800;line-height:1.15;margin:2px 0}
+.next p{margin:0;font-size:13px;color:var(--p1)}
+.next .btn{position:absolute;right:14px;bottom:14px;width:96px;height:40px;font-size:14px}
+.btn{width:100%;height:48px;border-radius:14px;border:2px solid var(--p3);background:var(--y1);color:var(--p3);font-weight:700;font-size:15px;cursor:pointer}
+.btn.sec{background:#fff;border-color:var(--p1);color:var(--p2)}
+.btn:active{transform:translateY(1px)}
+.row{display:flex;align-items:center;gap:12px;padding:10px 12px;background:#fff;border:1.5px solid var(--p1);border-radius:14px;margin-bottom:10px;width:100%;text-align:left;cursor:pointer;color:var(--p3)}
+.row.hl{background:var(--y2);border-color:var(--p2);border-width:2px}
+.row .av{width:36px;height:36px;border-radius:50%;background:var(--tan);border:1.5px solid var(--p1);display:grid;place-items:center;flex:none}
+.row .av.ok{background:var(--y1);border-color:var(--p3)}
+.row b{display:block;font-size:14px}
+.row small{display:block;font-size:12px;color:var(--p1)}
+.row .go{margin-left:auto;color:var(--p1);display:grid}
+.tag{margin-left:auto;font-size:11px;font-weight:700;background:var(--y2);border:1.5px solid var(--p3);border-radius:10px;padding:2px 8px;flex:none}
+.tag.ok{background:var(--y1)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tile{background:#fff;border:1.5px solid var(--p1);border-radius:14px;padding:12px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:12px;font-weight:700;cursor:pointer;text-align:center}
+.tile i{width:34px;height:34px;border-radius:50%;background:var(--tan);border:1.5px solid var(--p1)}
+.tabbar{display:flex;border-top:1.5px solid var(--p1);padding:8px 0 12px;flex:none}
+.tab{flex:1;background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:var(--p1);cursor:pointer}
+.tab i{width:22px;height:22px;border-radius:7px;background:var(--tan);border:1.5px solid var(--p1)}
+.tab.on{color:var(--p2);font-weight:800}.tab.on i{background:var(--pink);border-color:var(--p2)}
+.sum{background:var(--y2);border:2px solid var(--p2);border-radius:16px;padding:12px 14px}
+.sum small{font-size:12px;font-weight:700;color:var(--p2)}.sum b{display:block;font-size:16px;margin:2px 0 8px}
+.bar{height:9px;border-radius:6px;background:#fff;border:1.5px solid var(--p1);overflow:hidden}.bar i{display:block;height:100%;background:var(--y1)}
+.photo{height:84px;border:1.5px dashed var(--p1);background:var(--tan);border-radius:14px;display:grid;place-items:center;font-size:12px;color:var(--p2);font-weight:600;width:100%;cursor:pointer}
+input[type=text]{width:100%;height:46px;border-radius:12px;border:1.5px solid var(--p1);padding:0 14px;font:inherit;font-size:15px;background:#fff;color:var(--p3)}
+input.bad{border-color:#c0123f;border-width:2px}
+.err{color:#b00d3a;font-size:12px;font-weight:600;min-height:16px;margin-top:4px}
+.chips{display:flex;gap:8px}
+.chip{flex:1;height:40px;border-radius:20px;border:1.5px solid var(--p1);background:#fff;color:var(--p1);font-size:13px;cursor:pointer}
+.chip.on{background:var(--y1);border:2px solid var(--p3);color:var(--p3);font-weight:700}
+.hint{border:1.5px dashed var(--p1);border-radius:12px;padding:10px;text-align:center;font-size:12px;font-style:italic;color:var(--p1);margin:16px 0}
+.foot{padding:0 18px 16px;flex:none}
+.chipsum{background:var(--y2);border:2px solid var(--p2);border-radius:14px;padding:10px;text-align:center;font-size:13px;font-weight:700}
+.timerow{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.tbox{width:76px;border:2px solid var(--p2);border-radius:14px;background:#fff;display:flex;flex-direction:column;align-items:center}
+.tbox b{font-size:28px;line-height:1.1}
+.tbox button{background:none;border:0;width:100%;height:24px;cursor:pointer;color:var(--p1);display:grid;place-items:center}
+.colon{font-size:26px;font-weight:800}
+.rm{margin-left:auto;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--p1);background:#fff;color:var(--p1);cursor:pointer;font-size:18px;line-height:1}
+.link{background:none;border:0;padding:6px 0;color:var(--p2);font-weight:700;font-size:13px;text-decoration:underline;cursor:pointer}
+.opt{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 14px;background:#fff;border:1.5px solid var(--p1);border-radius:14px;margin-bottom:8px;font-size:14px;font-weight:700;text-align:left;cursor:pointer}
+.opt span.v{font-weight:500;color:var(--p1);font-size:13px}
+.sw{width:44px;height:24px;border-radius:12px;background:var(--tan);border:1.5px solid var(--p2);position:relative;flex:none}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:var(--card);border:1.5px solid var(--p2);transition:transform .15s}
+.sw.on{background:var(--pink)}.sw.on::after{transform:translateX(20px)}
+.okbar{display:flex;align-items:center;gap:10px;background:var(--y1);border:2px solid var(--p3);border-radius:16px;padding:12px 14px;font-weight:700;margin-bottom:6px}
+.okbar .link{margin-left:auto;color:var(--p2)}
+.toast{position:absolute;left:16px;right:16px;bottom:84px;background:var(--p3);color:var(--cream);padding:10px 14px;border-radius:12px;font-size:13px;opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s;text-align:center;z-index:5}
+.toast.show{opacity:1;transform:none}
+.panel{background:var(--panel);border:1.5px solid var(--panel-line);border-radius:18px;padding:20px;max-width:520px}
+.panel h2{margin:0 0 4px;font-size:20px}.panel p{margin:0 0 12px;color:var(--muted);font-size:14px}
+.panel h3{font-size:14px;margin:16px 0 8px}
+.tasks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.tasks li{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.tasks .bx{width:22px;height:22px;border-radius:7px;border:2px solid var(--p1);flex:none;display:grid;place-items:center;background:transparent;margin-top:1px}
+.tasks li.done .bx{background:var(--y1);border-color:var(--p3);color:var(--p3)}
+.tasks li.done span{text-decoration:line-through;opacity:.7}
+.reset{margin-top:16px;border:2px solid var(--p1);background:transparent;color:var(--pg-text);border-radius:12px;height:42px;padding:0 16px;font-weight:700;cursor:pointer}
+.path{font-size:13px;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body>
+<main class="stage">
+  <div class="phone" id="phone" aria-label="Protótipo do aplicativo MedLembra">
+    <div class="status"><span>7:30</span><span class="batt" aria-hidden="true"></span></div>
+    <div class="screen" id="screen"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <aside class="panel">
+    <h2>MedLembra · protótipo clicável</h2>
+    <p>Seu remédio na hora certa. Teste o caminho Cadastrar remédios, do Início até a confirmação.</p>
+    <h3>Tarefas para testar</h3>
+    <ul class="tasks" id="tasks"></ul>
+    <p class="path">Caminho: Início → 1.0 Meus remédios → 1.1 Novo remédio → 1.2 Definir horários → 1.3 Remédio salvo. Botões de outras funções mostram um aviso.</p>
+    <button class="reset" id="reset" type="button">Reiniciar protótipo</button>
+  </aside>
+</main>
+<script>
+const I={
+ back:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
+ go:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>',
+ up:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>',
+ dn:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
+ ck:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
+ pill:'<svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect x="3" y="11" width="28" height="12" rx="6" fill="#fff" stroke="#6B1240" stroke-width="2"/><path d="M17 11h8a6 6 0 010 12h-8z" fill="#FF7FB0" stroke="#6B1240" stroke-width="2"/></svg>'
+};
+const FREQ={'1x ao dia':['08:00'],'2x ao dia':['08:00','20:00'],'8 em 8h':['06:00','14:00','22:00']};
+const TASKS=['Abrir Meus remédios a partir do Início','Tocar em + Novo remédio para iniciar um cadastro','Informar nome, dose e frequência e tocar em Continuar','Definir o horário da dose e tocar em Salvar remédio','Voltar ao Início e encontrar a nova dose em Doses de hoje','Registrar uma dose tocando em Tomei'];
+const $=s=>document.querySelector(s);
+const pad=n=>String(n).padStart(2,'0');
+function newDraft(){return{name:'',dose:'1 comprimido',freq:'1x ao dia',times:['08:00'],tf:'1x ao dia',cont:true,rem:true,err:''}}
+let S;
+function fresh(){return{screen:'home',meds:[{id:1,name:'Antibiótico',dose:'1 comprimido',freq:'2x ao dia',times:['08:00','20:00']},{id:2,name:'Vitamina C',dose:'1 comprimido',freq:'1x ao dia',times:['09:00']}],taken:{},draft:newDraft(),newId:null,nextId:3,tasks:TASKS.map(()=>false)}}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function doses(){const d=[];S.meds.forEach(m=>m.times.forEach(t=>d.push({key:m.id+'|'+t,t,m})));return d.sort((a,b)=>a.t.localeCompare(b.t))}
+function mark(i){if(!S.tasks[i]){S.tasks[i]=true;panel()}}
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),2400)}
+function panel(){$('#tasks').innerHTML=TASKS.map((t,i)=>`<li class="${S.tasks[i]?'done':''}"><span class="bx" aria-hidden="true">${S.tasks[i]?I.ck:''}</span><span>${t}</span></li>`).join('')}
+function appbar(title,back){return`<header class="appbar"><button class="icon" data-a="${back}" aria-label="Voltar">${I.back}</button><h1>${title}</h1></header>`}
+function tabbar(on){const t=[['home','Hoje'],['list','Remédios'],['soon','Histórico']];return`<nav class="tabbar" aria-label="Navegação principal">${t.map(([a,l])=>`<button class="tab ${l===on?'on':''}" data-a="${a}"><i></i>${l}</button>`).join('')}</nav>`}
+function rowMed(m,hl){const nx=[...m.times].sort()[0];return`<button class="row ${hl?'hl':''}" data-a="soon"><span class="av"></span><span><b>${esc(m.name)}</b><small>${esc(m.dose)} · ${m.freq}${hl?`</small><small>Próxima dose: hoje, ${nx}`:''}</small></span>${hl?'<span class="tag ok">Novo</span>':`<span class="go">${I.go}</span>`}</button>`}
+function v_home(){
+  const d=doses(),nx=d.find(x=>!S.taken[x.key]);
+  if(S.newId)mark(4);
+  const card=nx?`<div class="next"><small>Próxima dose</small><div class="t">${nx.t}</div><p>${esc(nx.m.name)} · ${esc(nx.m.dose)}</p><button class="btn" data-a="take" data-k="${nx.key}">Tomei</button></div>`
+   :`<div class="next"><small>Próxima dose</small><div class="t">Tudo certo</div><p>Todas as doses de hoje foram registradas.</p></div>`;
+  return`<div class="content"><div class="brand"><div class="logo" aria-hidden="true">${I.pill}</div><div><b>MedLembra</b><span>Seu remédio na hora certa</span></div></div>${card}
+  <span class="label" style="margin-top:16px">Doses de hoje</span>
+  ${d.map(x=>{const ok=S.taken[x.key];return`<button class="row" data-a="take" data-k="${x.key}" aria-label="Alternar dose ${x.t} ${esc(x.m.name)}"><span class="av ${ok?'ok':''}">${ok?I.ck:''}</span><span><b>${x.t} · ${esc(x.m.name)}</b><small>${esc(x.m.dose)}</small></span><span class="tag ${ok?'ok':''}">${ok?'Tomada':'Pendente'}</span></button>`}).join('')}
+  <span class="label">Atalhos</span>
+  <div class="tiles"><button class="tile" data-a="list"><i></i>Meus remédios</button><button class="tile" data-a="soon"><i></i>Doses e lembretes</button><button class="tile" data-a="soon"><i></i>Histórico e estoque</button></div></div>${tabbar('Hoje')}`}
+function v_list(){
+  const d=doses(),n=d.filter(x=>S.taken[x.key]).length;
+  return`${appbar('Meus remédios','home')}<div class="content"><div class="sum"><small>Hoje</small><b>${n} de ${d.length} doses tomadas</b><div class="bar" role="progressbar" aria-valuenow="${n}" aria-valuemax="${d.length}"><i style="width:${d.length?n/d.length*100:0}%"></i></div></div>
+  <span class="label">Remédios ativos (${S.meds.length})</span>${S.meds.map(m=>rowMed(m,false)).join('')}
+  <div class="hint">Aqui aparecem os próximos remédios</div><button class="btn" data-a="new">+ Novo remédio</button></div>${tabbar('Remédios')}`}
+function v_form(){const D=S.draft;
+  return`${appbar('Novo remédio','list')}<div class="content"><button class="photo" data-a="soon">Foto da embalagem (opcional)</button>
+  <label class="label" for="in-name">Nome do remédio</label><input type="text" id="in-name" class="${D.err?'bad':''}" value="${esc(D.name)}" placeholder="Ex.: Vitamina D" autocomplete="off"><div class="err" id="err-name">${D.err}</div>
+  <label class="label" for="in-dose">Dose</label><input type="text" id="in-dose" value="${esc(D.dose)}" autocomplete="off">
+  <span class="label">Frequência</span><div class="chips">${Object.keys(FREQ).map(f=>`<button class="chip ${D.freq===f?'on':''}" data-a="chip" data-v="${f}" aria-pressed="${D.freq===f}">${f}</button>`).join('')}</div>
+  <div class="hint">Os horários são definidos no próximo passo</div></div><div class="foot"><button class="btn" data-a="cont">Continuar</button></div>`}
+function v_times(){const D=S.draft;
+  return`${appbar('Definir horários','form')}<div class="content"><div class="chipsum">${esc(D.name)} · ${esc(D.dose)} · ${D.freq}</div>
+  <span class="label">Horário da dose</span>
+  ${D.times.map((t,i)=>{const[h,m]=t.split(':');return`<div class="timerow"><div class="tbox"><button data-a="hup" data-i="${i}" aria-label="Aumentar hora">${I.up}</button><b>${h}</b><button data-a="hdn" data-i="${i}" aria-label="Diminuir hora">${I.dn}</button></div><span class="colon">:</span><div class="tbox"><button data-a="mup" data-i="${i}" aria-label="Aumentar minutos">${I.up}</button><b>${m}</b><button data-a="mdn" data-i="${i}" aria-label="Diminuir minutos">${I.dn}</button></div>${D.times.length>1?`<button class="rm" data-a="rmt" data-i="${i}" aria-label="Remover horário">×</button>`:''}</div>`}).join('')}
+  ${D.times.length<4?'<button class="link" data-a="addt">+ Adicionar outro horário</button>':''}
+  <span class="label">Duração do tratamento</span>
+  <button class="opt" data-a="tog" data-v="cont" role="switch" aria-checked="${D.cont}">Uso contínuo<span class="sw ${D.cont?'on':''}"></span></button>
+  <button class="opt" data-a="soon">Início<span class="v">Hoje</span></button>
+  <button class="opt" data-a="tog" data-v="rem" role="switch" aria-checked="${D.rem}">Lembrete no celular<span class="sw ${D.rem?'on':''}"></span></button></div>
+  <div class="foot"><button class="btn" data-a="save">Salvar remédio</button></div>`}
+function v_saved(){const m=S.meds.find(x=>x.id===S.newId);
+  return`${appbar('Meus remédios','home')}<div class="content"><div class="okbar" role="status">${I.ck}<span>Remédio salvo</span><button class="link" data-a="undo">Desfazer</button></div>
+  <span class="label">Remédios ativos (${S.meds.length})</span>${S.meds.map(x=>rowMed(x,x.id===S.newId)).join('')}<button class="btn sec" style="margin-top:6px" data-a="new">+ Novo remédio</button></div>${tabbar('Remédios')}`}
+function render(){const v={home:v_home,list:v_list,form:v_form,times:v_times,saved:v_saved}[S.screen];$('#screen').innerHTML=v();const c=$('#screen .content');if(c)c.scrollTop=0}
+function setT(i,fn){const[h,m]=S.draft.times[i].split(':').map(Number);const r=fn(h,m);S.draft.times[i]=pad(r[0])+':'+pad(r[1])}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,D=S.draft;
+  switch(a){
+   case'home':S.screen='home';break;
+   case'list':S.screen='list';if(S.screen==='list')mark(0);break;
+   case'new':S.draft=newDraft();S.screen='form';mark(1);break;
+   case'form':S.screen='form';break;
+   case'chip':D.freq=b.dataset.v;break;
+   case'cont':if(!D.name.trim()){D.err='Informe o nome do remédio para continuar.';break}
+     D.err='';if(D.tf!==D.freq){D.times=[...FREQ[D.freq]];D.tf=D.freq}S.screen='times';mark(2);break;
+   case'hup':setT(+b.dataset.i,(h,m)=>[(h+1)%24,m]);break;
+   case'hdn':setT(+b.dataset.i,(h,m)=>[(h+23)%24,m]);break;
+   case'mup':setT(+b.dataset.i,(h,m)=>[h,(m+5)%60]);break;
+   case'mdn':setT(+b.dataset.i,(h,m)=>[h,(m+55)%60]);break;
+   case'addt':if(D.times.length<4)D.times.push('12:00');break;
+   case'rmt':D.times.splice(+b.dataset.i,1);break;
+   case'tog':D[b.dataset.v]=!D[b.dataset.v];break;
+   case'save':{const id=S.nextId++;S.meds.unshift({id,name:D.name.trim(),dose:D.dose.trim()||'1 comprimido',freq:D.freq,times:[...D.times].sort()});S.newId=id;S.screen='saved';mark(3);break}
+   case'undo':S.meds=S.meds.filter(x=>x.id!==S.newId);S.newId=null;S.screen='list';render();toast('Cadastro desfeito');return;
+   case'take':S.taken[b.dataset.k]=!S.taken[b.dataset.k];if(S.taken[b.dataset.k])mark(5);break;
+   case'soon':toast('Esta tela não faz parte do caminho deste protótipo');return;
+  }
+  render();
+});
+document.addEventListener('input',e=>{
+  if(e.target.id==='in-name'){S.draft.name=e.target.value;if(S.draft.err&&e.target.value.trim()){S.draft.err='';$('#err-name').textContent='';e.target.classList.remove('bad')}}
+  if(e.target.id==='in-dose')S.draft.dose=e.target.value;
+});
+$('#reset').addEventListener('click',()=>{S=fresh();panel();render()});
+S=fresh();panel();render();
+</script>
+</body>
+</html>
