@@ -31,7 +31,7 @@ export const certificados = [
     titulo: "UI/UX Design",
     por: "CalArts (Coursera)",
     link: "https://www.coursera.org/account/accomplishments/specialization/1E1YDIV81GA9",
-    imagem: "coursera.uxcalarts.pdf",
+    imagem: "coursera.uxcalarts.png",
     alt: "Certificado CalArts UI/UX Design",
   },
   {
